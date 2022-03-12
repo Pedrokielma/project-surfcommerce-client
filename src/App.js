@@ -1,51 +1,45 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.css';
+import Navbar from './Components/Navbar/Navbar';
 import HomePage from './pages/HomePage/HomePage';
-import Navbar from './components/Navbar/Navbar';
-import ProjectsListPage from './pages/ProjectsListPage/ProjectsListPage';
+import ItemListPage from './pages/ItemsListPage/ItemListPage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import SignupPage from './pages/SignupPage/SignupPage';
 
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      {/* <Navbar /> */}
 
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} /> 
         <Route
-          path="/projects"
+          path="/items"
           element={
-            <IsPrivate>
-              <ProjectsListPage />
-            </IsPrivate>
+            // <IsPrivate>
+            <>
+               <Navbar />
+              <ItemListPage />
+            </>
+              
+            // </IsPrivate>
           }
-        />
-        <Route
-          path="/projects/:projectId"
-          element={
-            <IsPrivate>
-              <ProjectDetails />
-            </IsPrivate>
-          }
-        />
-        <Route path="/projects/edit/:projectId" element={<EditProjectPage />} />
-        <Route
-          path="/signup"
-          element={
-            <IsAnon>
-              <SignupPage />
-            </IsAnon>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <IsAnon>
+        />   
+
+        <Route path="/login" element={
+            // <IsPrivate>
               <LoginPage />
-            </IsAnon>
-          }
-        />
+            // </IsPrivate>
+          }/>
+          <Route path="/signup" element={
+            // <IsPrivate>
+              <SignupPage />
+            // </IsPrivate>
+          }/>
       </Routes>
+      
     </div>
   );
 }

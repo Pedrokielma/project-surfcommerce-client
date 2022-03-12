@@ -1,39 +1,40 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { ThemeContext } from '../../context/theme.context';
+// import { ThemeContext } from '../../context/theme.context';
 
 function ItemsListPage() {
-  const [projects, setProjects] = useState([]);
+  const [items, setItems] = useState([]);
 
-  const { theme } = useContext(ThemeContext);
+  // const { theme } = useContext(ThemeContext);
 
-  const fetchProjects = async () => {
+  const fetchItems = async () => {
     try {
       const storedToken = localStorage.getItem('authToken');
 
-      let response = await axios.get(`${process.env.REACT_APP_API_URL}/projects`, {
+      let response = await axios.get(`http://localhost:5005/api/items`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       });
-      setProjects(response.data);
+      setItems(response.data);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    fetchProjects();
+    fetchItems();
   }, []);
 
   return (
-    <div className={'ProjectsPage ' + theme}>
-      <AddForm refreshProjects={fetchProjects} />
-      {projects.map((project) => {
+    <div >
+      {/* <AddForm refreshItems={fetchItems} /> */}
+      {items.map((item) => {
         return (
-          <div key={project._id}>
-            <Link to={`/projects/${project._id}`}>
-              <h3>{project.title}</h3>
+          <div key={item._id}>
+            <Link to={`/items/${item._id}`}>
+              <h3>{item.title}</h3>
             </Link>
+            {console.log(item._id)}
           </div>
         );
       })}
@@ -41,4 +42,4 @@ function ItemsListPage() {
   );
 }
 
-export default ItemstsListPage;
+export default ItemsListPage;
