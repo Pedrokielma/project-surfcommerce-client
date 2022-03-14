@@ -8,7 +8,10 @@ function Navbar() {
 const { loggedIn, user, logoutUser } = useContext(AuthContext);
 
   return (
+
+
     <nav className={'Navbar'}>
+
       <Link to="/"> Homepage</Link>
       <Link to="/items"> SurfItems</Link>
       {loggedIn && (
@@ -26,6 +29,8 @@ const { loggedIn, user, logoutUser } = useContext(AuthContext);
         </>
       )}
     </nav>
+
+
 
   )
 }

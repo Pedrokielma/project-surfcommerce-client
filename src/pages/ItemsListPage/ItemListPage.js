@@ -27,6 +27,11 @@ function ItemsListPage() {
 
   return (
     <div >
+      {/* <form onSubmit={handleSubmit}>
+        <input type="text" name="item" onChange={handlePokemonInput} />
+        <button>Search</button>
+      </form> */}
+    <input type="text" placeholder='Serach...' />
       {/* <AddForm refreshItems={fetchItems} /> */}
       {items.map((item) => {
         return (
