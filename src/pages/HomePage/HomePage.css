@@ -1,0 +1,44 @@
+.first-section{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-items: center;
+	align-content: center;
+    /* position: absolute;
+width: 603px;
+height: 269px;
+left: 851px;
+top: 205px; */
+}
+.home-image {
+    position: absolute;
+width: 732px;
+height: 489px;
+left: 78px;
+top: 325px;
+border-radius: 150px;
+}
+.home-paragraf{
+    position: absolute;
+width: 603px;
+height: 269px;
+left: 846px;
+top: 382px;
+
+font-family: Rubik;
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 36px;
+}
+.button-about{
+    
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    left: 38px;
+    top: 205px;
+    
+    border-radius: 150px;
+}

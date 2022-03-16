@@ -11,7 +11,7 @@ function MyAdds() {
     // const { myUser, userInfo } = useContext(user);
     const [items, setItems] = useState([]);
 
-    // const { theme } = useContext(ThemeContext);
+  
   
     const fetchItems = async () => {
       try {
@@ -20,7 +20,7 @@ function MyAdds() {
         let response = await axios.get(`http://localhost:5005/api/myadds`, {
           headers: { Authorization: `Bearer ${storedToken}` },
         });
-        setItems(response.data);
+        setItems(response.data.items);
       } catch (error) {
         console.log(error);
       }
@@ -39,7 +39,7 @@ function MyAdds() {
     <input type="text" name="item" onChange={handlePokemonInput} />
     <button>Search</button>
   </form> */}
-<input type="text" placeholder='Serach...' />
+{/* <input type="text" placeholder='Serach...' /> */}
   {/* <AddForm refreshItems={fetchItems} /> */}
   
   {items.map((item) => {

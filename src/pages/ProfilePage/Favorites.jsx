@@ -4,39 +4,38 @@ import axios from 'axios';
 
 
 function Favorites() {
-  // const [favoriteItems, setFavoriteitems] = useState([]);
+  const [favoriteItems, setFavoriteitems] = useState([]);
 
-  //   // const { theme } = useContext(ThemeContext);
   
-  //   const fetchItems = async () => {
-  //     try {
-  //       const storedToken = localStorage.getItem('authToken');
+    const fetchItems = async () => {
+      try {
+        const storedToken = localStorage.getItem('authToken');
   
-  //       let response = await axios.get(`http://localhost:5005/api/myadds`, {
-  //         headers: { Authorization: `Bearer ${storedToken}` },
-  //       });
-  //       setFavoriteitems(response.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
+        let response = await axios.get(`http://localhost:5005/api/myadds`, {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        });
+        setFavoriteitems(response.data.favitems);
+      } catch (error) {
+        console.log(error);
+      }
+    };
   
-  //   useEffect(() => {
-  //     fetchItems();
-  //   }, []);
+    useEffect(() => {
+      fetchItems();
+    }, []);
 
 
   return (
     <div>
     <ProfileNav />
     <h1>Favorite Items</h1>
-     {/* {favoriteItems.map((item) => {
+     {favoriteItems.map((item) => {
        return (
          <>
          <h3>{item.title}</h3>
          </>
        )
-     })} */}
+     })}
     </div>
   )
 }

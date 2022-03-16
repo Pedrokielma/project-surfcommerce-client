@@ -2,6 +2,9 @@ import React, { useContext } from 'react'
 // import { Nav, Container, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
+import './Navbar.css';
+import { FaHome } from "react-icons/fa";
+
 
 
 function Navbar() {
@@ -12,23 +15,27 @@ const { loggedIn, user, logoutUser } = useContext(AuthContext);
 
     <nav className={'Navbar'}>
 
-      <Link to="/"> Homepage</Link>
-      <Link to="/items"> SurfItems</Link>
+
+<Link className="link"to="/"><FaHome /> Home</Link>
+      <Link className="link"to="/">Home</Link>
+      <Link className="link" to="/items"> SurfItems</Link>
       {loggedIn && (
         <>
-          <Link to="/profile"> Profile</Link>
-          {user.username}
-          <button onClick={logoutUser}>Logout</button>
+      
+          <button className="log" onClick={logoutUser}>Logout</button>
+          <Link className="log" to="/profile"> Profile</Link>
+          {/* <h4> hello, {user.username}</h4> */}
         </>
       )}
 
       {!loggedIn && (
         <>
-          <Link to="/signup"> Signup</Link>
-          <Link to="/login"> Login</Link>
+          <Link className="log" to="/signup"> Signup</Link>
+          <Link className="log" to="/login"> Login</Link>
         </>
       )}
     </nav>
+
 
 
 
