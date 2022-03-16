@@ -21,7 +21,7 @@ import ProfileNav from "../../Components/ProfileNav/ProfileNav";
 
     const body = { user: user._id, content }
     axios
-        .post(`http://localhost:5005/api/items/${itemId}`, body, 
+        .post(`${process.env.REACT_APP_API_URL}/${itemId}`, body, 
         {headers: { Authorization: `Bearer ${storedToken}` }})
         .then((response) => {
           props.fetchItem()

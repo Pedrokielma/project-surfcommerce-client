@@ -12,13 +12,13 @@ function EditItemPage() {
 
   const deleteItem = () => {
     axios
-      .delete(`http://localhost:5005/api/items/${itemId}`)
+      .delete(`${process.env.REACT_APP_API_URL}/api/items/${itemId}`)
       .then(() => navigate('/items'));
   };
 
   const fetchItem = async () => {
     try {
-      let response = await axios.get(`http://localhost:5005/api/items//items/${itemId}`);
+      let response = await axios.get(`${process.env.REACT_APP_API_URL}/items/${itemId}`);
       let { title, description } = response.data;
       setTitle(title);
       setDescription(description);
@@ -37,7 +37,7 @@ function EditItemPage() {
     const body = { title, description };
 
     axios
-      .put(`http://localhost:5005/api/items/${itemId}`, body)
+      .put(`${process.env.REACT_APP_API_URL}/api/items/${itemId}`, body)
       .then((response) => {
         setTitle('');
         setDescription('');

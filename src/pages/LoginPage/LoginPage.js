@@ -22,7 +22,7 @@ function LoginPage() {
     const body = { username, password };
 
     axios
-      .post(`http://localhost:5005/auth/login`, body)
+      .post(`${process.env.REACT_APP_API_URL}/auth/login`, body)
       .then((response) => {
         console.log('res.data', response.data);
         storeToken(response.data.authToken);

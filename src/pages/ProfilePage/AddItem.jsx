@@ -22,7 +22,7 @@ import ProfileNav from "../../Components/ProfileNav/ProfileNav";
       e.preventDefault();
     const body = { title, description, image, category, price, user: user._id }
     axios
-        .post('http://localhost:5005/api/items', body)
+        .post(`${process.env.REACT_APP_API_URL}/api/items`, body)
         .then((response) => {
           console.log(response);
           setTitle('');

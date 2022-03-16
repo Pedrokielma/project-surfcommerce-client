@@ -11,7 +11,7 @@ function Favorites() {
       try {
         const storedToken = localStorage.getItem('authToken');
   
-        let response = await axios.get(`http://localhost:5005/api/myadds`, {
+        let response = await axios.get(`${process.env.REACT_APP_API_URL}/api/myadds`, {
           headers: { Authorization: `Bearer ${storedToken}` },
         });
         setFavoriteitems(response.data.favitems);

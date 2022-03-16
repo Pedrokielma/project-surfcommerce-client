@@ -10,7 +10,7 @@ function ItemDetails() {
 
   const fetchItem = async () => {
     try {
-      let response = await axios.get(`http://localhost:5005/api/items/${itemId}`);
+      let response = await axios.get(`${process.env.REACT_APP_API_URL}/api/items/${itemId}`);
       setItem(response.data); console.log(response.data);
     } catch (error) {
       console.log(error);

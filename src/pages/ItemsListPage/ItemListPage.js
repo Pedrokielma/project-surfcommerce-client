@@ -16,7 +16,7 @@ function ItemsListPage() {
     try {
     
 
-      let response = await axios.get(`http://localhost:5005/api/items`, {
+      let response = await axios.get(`${process.env.REACT_APP_API_URL}/api/items`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       });
       setItems(response.data);
@@ -34,7 +34,7 @@ function ItemsListPage() {
 
   const favoriteItem = (itemId) => {
     axios
-      .put(`http://localhost:5005/api/favorite/${itemId}`, {}, {
+      .put(`${process.env.REACT_APP_API_URL}/api/favorite/${itemId}`, {}, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then(() => console.log(itemId))

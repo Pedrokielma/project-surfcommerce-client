@@ -17,7 +17,7 @@ function SignupPage() {
     const body = { username, password };
 
     axios
-      .post(`http://localhost:5005/auth/signup`, body)
+      .post(`${process.env.REACT_APP_API_URL}/auth/signup`, body)
       .then((response) => {
         navigate('/login');
       })
