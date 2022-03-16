@@ -1,0 +1,13 @@
+.footer{
+    background-color: rgb(5, 5, 50);
+    color: white;
+
+}
+.footer ul{
+    list-style: none;
+    padding: 0;
+    color: white;
+}
+.footer ul li a{
+    color: white;
+}

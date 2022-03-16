@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;700&family=Rubik:wght@300&display=swap');
 
-*, *::before{
+/* *, *::before{
   background-color: #90a9bf20;
-}
+} */
 
 .App {
   text-align: center;
   font-family: 'Rubik', sans-serif;
+  background-color: #90a9bf76;
 }
 
 

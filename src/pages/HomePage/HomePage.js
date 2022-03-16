@@ -1,6 +1,9 @@
 import React from 'react';
 import Navbar from '../../Components/Navbar/Navbar'
 import './HomePage.css';
+import { Link } from 'react-router-dom';
+import MyFooter from '../../Components/Footer/Footer'
+
 
 function HomePage() {
   return (
@@ -16,8 +19,32 @@ function HomePage() {
       </div>
       </section>
       <section className='second-section'>
-      
+      <h1>explore</h1>
+      <div>
+      <div className="row">
+  <div className="col-sm-6">
+    <div className="card">
+      <div className="card-body colorCard">
+        <h5 className="card-title">Special title treatment</h5>
+        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" className="btn btn-dark">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div className="col-sm-6">
+    <div className="card">
+      <div className="card-body colorCard">
+        <h5 className="card-title">Special title treatment</h5>
+        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" className="btn btn-dark">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
       </section>
+
+      <MyFooter />
     </div>
   );
 }

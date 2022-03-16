@@ -5,7 +5,7 @@ import axios from 'axios';
 import { AuthContext } from '../../context/auth.context';
 
 
-import ProfileNav from "../../Components/ProfileNav/ProfileNav";
+// import ProfileNav from "../../Components/ProfileNav/ProfileNav";
 
   function Comments(props) {
     const { user, userAuth } = useContext(AuthContext);
@@ -21,7 +21,7 @@ import ProfileNav from "../../Components/ProfileNav/ProfileNav";
 
     const body = { user: user._id, content }
     axios
-        .post(`${process.env.REACT_APP_API_URL}/${itemId}`, body, 
+        .post(`${process.env.REACT_APP_API_URL}/api/items/${itemId}`, body, 
         {headers: { Authorization: `Bearer ${storedToken}` }})
         .then((response) => {
           props.fetchItem()

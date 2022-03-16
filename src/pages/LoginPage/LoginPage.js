@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './LoginPage.css';
 
 import { AuthContext } from '../../context/auth.context';
 
@@ -32,18 +33,35 @@ function LoginPage() {
       .catch((err) => console.log(err));
   };
   return (
-    <div>
+    <div className="login-block">
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username" id="username" placeholder="Username" >Username</label>
         <input type="text" name="username" value={username} onChange={handleUsername} />
 
         <label htmlFor="password">Password</label>
-        <input type="password" name="password" value={password} onChange={handlePassword} />
+        <input type="password" name="password"  id="password" value={password} onChange={handlePassword} />
 
         <button type="submit"> Login</button>
       </form>
     </div>
+
+/* <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<div class="logo"></div>
+<div class="login-block">
+    <h1>Login</h1>
+    <input type="text" value="" placeholder="Username" id="username" />
+    <input type="password" value="" placeholder="Password" id="password" />
+    <button>Submit</button>
+</div> */
+
+// // {/* <div class="logo"></div>
+// // <div class="login-block">
+// //     <h1>Login</h1>
+// //     <input type="text" value="" placeholder="Username" id="username" />
+// //     <input type="password" value="" placeholder="Password" id="password" />
+// //     <button>Submit</button> */}
+// </div>
   );
 }
 
