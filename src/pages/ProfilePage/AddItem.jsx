@@ -41,7 +41,7 @@ import ProfileNav from "../../Components/ProfileNav/ProfileNav";
       <div>
          <ProfileNav />
   
-         <h3>Add New Beer</h3>
+         <h3>Post Item</h3>
          
         <form onSubmit={handleSubmit}>
           <label htmlFor="title">Title</label>
