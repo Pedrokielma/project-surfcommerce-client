@@ -17,7 +17,7 @@ function Navbar() {
   const { loggedIn, user, logoutUser } = useContext(AuthContext);
 
   const fetchWeather = async () => {
-    const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${"e17f58f9141ee266cf9ec751d494d5ba"}`)
+    const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`)
     setWeatherData(`${Math.ceil(response.data.main.temp - 273.15)}oC`)
   };
 
