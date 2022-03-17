@@ -34,7 +34,6 @@ font-style: normal;
 font-weight: 900;
 font-size: 40px;
 line-height: 66px;
-height: 100%;
 
 }
 
@@ -46,7 +45,7 @@ height: 100%;
     border: 1px solid #ccc;
     margin-bottom: 20px;
     font-size: 14px;
-    font-family: 'Rubik';
+    font-family: Rubik;
     padding: 0 20px 0 50px;
     outline: none;
 }
@@ -86,7 +85,7 @@ height: 100%;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 14px;
-    font-family: 'Rubik';
+    font-family: Rubik;
     outline: none;
     cursor: pointer;
     

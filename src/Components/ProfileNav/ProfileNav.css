@@ -1,0 +1,26 @@
+
+.profile-nav {
+  list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #4B7772;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    align-content: center;
+}
+.profile-link {
+    display: block;
+    color: black;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    float: left;
+    border-right:1px solid #bbb;
+   
+  }

@@ -2,6 +2,7 @@ import { React, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../../context/auth.context';
+import './AddItem.css';
 
 
 import ProfileNav from "../../Components/ProfileNav/ProfileNav";
@@ -38,15 +39,16 @@ import ProfileNav from "../../Components/ProfileNav/ProfileNav";
     };
     
     return (
-      <div>
+      <div className='items-page-main'>
          <ProfileNav />
   
-         <h3>Post Item</h3>
-         
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="title">Title</label>
-          <input type="text" onChange={(e) => setTitle(e.target.value)} />
-          <label htmlFor="text">Description</label>
+         <div className="login-block">
+  <h1 className="titleIn"> <b>Post Item</b></h1>
+  <form  className="login-form" onSubmit={handleSubmit}>
+   <label htmlFor="title" id="username" >Title</label>
+    <input type="text" onChange={(e) => setTitle(e.target.value)} />
+
+  <label  htmlFor="text">Description</label>
           <input type="text" onChange={(e) => setDescription(e.target.value)} />
           <label htmlFor="title">Image</label>
           <input type="text" onChange={(e) => setImage(e.target.value)} />
@@ -54,13 +56,33 @@ import ProfileNav from "../../Components/ProfileNav/ProfileNav";
           <input type="text" onChange={(e) => setCategory(e.target.value)} />
           <label htmlFor="title">Price</label>
           <input type="text" onChange={(e) => setPrice(e.target.value)} />
-          <button type="submit">Post Add</button>
-        </form>
+
+    <button type="submit"> Login</button>
+  </form>
+</div>
         {console.log()}
       </div>
+
+
+
     )
   }
 
 export default AddItem;
+
+{/* <section className="backgroundLogin">
+<div className="login-block">
+  <h1 className="titleIn"> <b>Login</b></h1>
+  <form  className="login-form" onSubmit={handleSubmit}>
+   <label htmlFor="title" id="username" >Title</label>
+    <input type="text" onChange={(e) => setTitle(e.target.value)} />
+
+    <label htmlFor="password">Password</label>
+    <input type="password" name="password"  id="password" value={password} onChange={handlePassword} />
+
+    <button type="submit"> Login</button>
+  </form>
+</div>
+</section> */}
 
 

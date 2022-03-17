@@ -6,10 +6,6 @@
     background-color: #90a9bf;
   }
   
-  .link{
-    float: left;
-    border-right:1px solid #bbb;
-  }
   
   .log {
     border-right: none;
@@ -25,8 +21,12 @@
     display: block;
     color: black;
     text-align: center;
+    align-content: center;
+    align-items: center;
     padding: 14px 16px;
     text-decoration: none;
+    float: left;
+    border-right:1px solid #bbb;
   }
   
   li a:hover:not(.active) {
@@ -35,4 +35,7 @@
   
   .active {
     background-color: #04AA6D;
+  }
+  .logo{
+    font-size: 2.00em;
   }

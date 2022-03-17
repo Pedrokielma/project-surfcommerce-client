@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import './HomePage.css';
 import { Link } from 'react-router-dom';
 import MyFooter from '../../Components/Footer/Footer'
+import { AuthContext } from '../../context/auth.context';
+import { FcSearch } from 'react-icons/fc';
+import { MdSell } from "react-icons/md"
 
 
 function HomePage() {
+  const { loggedIn } = useContext(AuthContext);
+
   return (
     <div>
     <Navbar></Navbar>
@@ -19,24 +24,31 @@ function HomePage() {
       </div>
       </section>
       <section className='second-section'>
-      <h1>explore</h1>
+      <div className="explore"><h1>explore</h1></div>
       <div>
       <div className="row">
   <div className="col-sm-6">
     <div className="card">
       <div className="card-body colorCard">
-        <h5 className="card-title">Special title treatment</h5>
-        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" className="btn btn-dark">Go somewhere</a>
+        <h5 className="card-title"><FcSearch className="reactIcon" /></h5>
+        <p className="card-text">Search for Surf Items of your needs</p>
+        <Link to="/items" className="btn btn-dark">Serach Items</Link>
       </div>
     </div>
   </div>
   <div className="col-sm-6">
     <div className="card">
       <div className="card-body colorCard">
-        <h5 className="card-title">Special title treatment</h5>
-        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" className="btn btn-dark">Go somewhere</a>
+        <h5 className="card-title"><MdSell className="reactIcon" /></h5>
+        <p className="card-text">Sell your Itens</p>
+        {loggedIn && (
+          <Link className="btn btn-dark" to="/profile"> create a Post </Link>
+      )}
+
+      {!loggedIn && (
+          <Link className="btn btn-dark" to="/login"> create a Post</Link>
+      )} 
+        {/* <a href="/profile" className="btn btn-dark">post Item</a> */}
       </div>
     </div>
   </div>

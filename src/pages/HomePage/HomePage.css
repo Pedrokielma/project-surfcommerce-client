@@ -5,6 +5,8 @@
 	justify-content: space-evenly;
 	align-items: center;
 	align-content: center;
+    height: 100vh;
+    width: 100vw;
     /* position: absolute;
 width: 603px;
 height: 269px;
@@ -43,35 +45,32 @@ line-height: 36px;
     
     border-radius: 150px;
 }
-.btn-purple{
-    width: 210px;
-    height: 79px;
-    left: 255px;
-    top: 1280px;
-    
-    
-    
-    background: #787EA7;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 12px;
 
-    position: absolute;
-width: 51px;
-height: 33px;
-left: 332px;
-top: 1303px;
 
-font-family: 'Rubik';
-font-style: normal;
-font-weight: 700;
-font-size: 28px;
-line-height: 33px;
-
-color: #FFFFFF;
-}
-
-.colorCard{
+.second-section{
+    height: 100vh;
+    width: 100vw;
     background-color: #90a9bf;
 }
 
+.colorCard{
+    background-color: #90a9bf6a;
+    height: 500px;
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-evenly;
+	align-items: center;
+	align-content: center;
+}
+.reactIcon{
+    font-size: 3.00em;
+}
+.explore{
+   
+    padding: 50px;
+}
+/* .row{
+    height: 100vh;
+    width: 100vw;
+} */

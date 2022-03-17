@@ -47,24 +47,39 @@ function EditItemPage() {
   };
 
   return (
-    <div>
-      <h3>Edit Item</h3>
-      <form onSubmit={handleSubmit}>
+    <div className="eddit-item-main">
+     <div className="login-block">
+<h1 className="titleIn"> <b>Edit Item</b></h1>
+<form  className="login-form" onSubmit={handleSubmit}>
+
+<label  htmlFor="text">Description</label>
         <label htmlFor="title">Title</label>
         <input type="text" name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
 
         <label htmlFor="description">Description</label>
-        <input
-          type="text"
-          name="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <button type="submit">Edit Item</button>
-      </form>
-      <button onClick={deleteItem}> Delete Item</button>
+        <input type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)}/>
+      <button type="submit">Edit Item</button>
+
+   <button onClick={deleteItem}> Delete Item</button>
+</form>
+</div>
     </div>
   );
 }
 
 export default EditItemPage;
+{/* <div className="login-block">
+<h1 className="titleIn"> <b>Edit Item</b></h1>
+<form  className="login-form" onSubmit={handleSubmit}>
+
+<label  htmlFor="text">Description</label>
+        <label htmlFor="title">Title</label>
+        <input type="text" name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
+
+        <label htmlFor="description">Description</label>
+        <input type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)}/>
+      <button type="submit">Edit Item</button>
+
+   <button onClick={deleteItem}> Delete Item</button>
+</form>
+</div> */}

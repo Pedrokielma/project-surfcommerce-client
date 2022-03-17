@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProfileNav from "../../Components/ProfileNav/ProfileNav";
+import './ProfilePage.css';
 
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -33,7 +34,7 @@ function MyAdds() {
 
 
   return (
-  <div >
+  <div className="profile-page-main" >
    <ProfileNav />
   {/* <form onSubmit={handleSubmit}>
     <input type="text" name="item" onChange={handlePokemonInput} />
@@ -45,18 +46,43 @@ function MyAdds() {
   {items.map((item) => {
     return (
 
+  <div className="courses-container">
+	 <div className="course">
+		<div styles={{ backgroundImage:`url('${item.image}')` }}>
+			
+		</div>
+		<div className="course-info">
+			<div className="progress-container">
+				
+			<h6>
+					<b>{item.price}$</b>
+          </h6>
+			</div>
+			<h2>{item.title}</h2>
+      <h6>{item.category}</h6>
+
+      <Link className="btn"  to={`/items/edit/${item._id}`}>Edit </Link>
       
-      <div key={item._id}>
+		</div>
+	</div>
+</div>
+    );
+  })}
+</div>
+
+  
+
+)
+}
+
+export default MyAdds
+
+
+{/* <div key={item._id}>
       {console.log(item)}
         <Link to={`/items/edit/${item._id}`}>
           <h3>{item.title}</h3>
         </Link>
         {console.log(item._id)}
-      </div>
-    );
-  })}
-</div>
-)
-}
-
-export default MyAdds
+      </div> */}
+  

@@ -24,18 +24,21 @@ function SignupPage() {
       .catch((err) => console.log(err));
   };
   return (
-    <div>
-      <h1>Signup</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
+   
+     <section className="backgroundLogin">
+    <div className="login-block">
+      <h1 className="titleIn"> <b>Signup</b></h1>
+      <form  className="login-form" onSubmit={handleSubmit}>
+        <label htmlFor="username" id="username" placeholder="Username" >Username</label>
         <input type="text" name="username" value={username} onChange={handleUsername} />
 
         <label htmlFor="password">Password</label>
-        <input type="password" name="password" value={password} onChange={handlePassword} />
+        <input type="password" name="password"  id="password" value={password} onChange={handlePassword} />
 
-        <button type="submit"> Signup</button>
+        <button type="submit"> Login</button>
       </form>
     </div>
+    </section>
   );
 }
 

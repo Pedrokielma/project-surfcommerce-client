@@ -1,14 +1,29 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 // import { Nav, Container, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
 import './Navbar.css';
-import { FaHome } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
+import { GiSurfBoard } from "react-icons/gi";
+import axios from 'axios';
 
 
 
 function Navbar() {
-const { loggedIn, user, logoutUser } = useContext(AuthContext);
+  const [weatherData, setWeatherData] = useState(null)
+  const [lat, setLat] = useState("38")
+  const [lon, setLon] = useState("-9")
+
+  const { loggedIn, user, logoutUser } = useContext(AuthContext);
+
+  const fetchWeather = async () => {
+    const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${"e17f58f9141ee266cf9ec751d494d5ba"}`)
+    setWeatherData(`${Math.ceil(response.data.main.temp - 273.15)}oC`)
+  };
+
+  useEffect(() => {
+    fetchWeather();
+  }, []);
 
   return (
 
@@ -16,9 +31,12 @@ const { loggedIn, user, logoutUser } = useContext(AuthContext);
     <nav className={'Navbar'}>
 
 
-<Link className="link"to="/"><FaHome /> Home</Link>
-      <Link className="link"to="/">Home</Link>
-      <Link className="link" to="/items"> SurfItems</Link>
+<Link className="link"to="/"> <GiSurfBoard className="logo" /></Link>
+      <Link className="link"to="/"> Home</Link>
+      <Link className="link" to="/items"> <FaSearch /> SurfItems</Link>
+      <p className="link">{weatherData}</p>
+
+
       {loggedIn && (
         <>
       

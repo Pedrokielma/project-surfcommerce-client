@@ -33,9 +33,10 @@ function LoginPage() {
       .catch((err) => console.log(err));
   };
   return (
+    <section className="backgroundLogin">
     <div className="login-block">
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+      <h1 className="titleIn"> <b>Login</b></h1>
+      <form  className="login-form" onSubmit={handleSubmit}>
         <label htmlFor="username" id="username" placeholder="Username" >Username</label>
         <input type="text" name="username" value={username} onChange={handleUsername} />
 
@@ -45,6 +46,7 @@ function LoginPage() {
         <button type="submit"> Login</button>
       </form>
     </div>
+    </section>
 
 /* <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <div class="logo"></div>
