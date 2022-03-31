@@ -1,63 +1,65 @@
-import React, { useContext } from 'react'
-import Navbar from '../../Components/Navbar/Navbar'
-import './HomePage.css';
-import { Link } from 'react-router-dom';
-import MyFooter from '../../Components/Footer/Footer'
-import { AuthContext } from '../../context/auth.context';
-import { FcSearch } from 'react-icons/fc';
-import { MdSell } from "react-icons/md"
-
+import React, { useContext } from "react";
+import Navbar from "../../Components/Navbar/Navbar";
+import "./HomePage.css";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/auth.context";
+import { FcSearch } from "react-icons/fc";
+import { MdSell } from "react-icons/md";
+import image from "../../images/backgroundImage.jpg";
+import image2 from '../../images/image 26.jpg'
 
 function HomePage() {
   const { loggedIn } = useContext(AuthContext);
 
   return (
-    <div>
-    <Navbar></Navbar>
-      <section className='first-section'>
-      <img className='home-image' src="https://lushpalm.com/wp-content/uploads/2021/07/beginner-surfboards.jpg" alt="Surf boards" />
-      <div className='home-paragraf'>
-      <p >Vulputate quis commodo dolor, cursus. Nisl, duis enim suspendisse aenean. 
-      Aliquet lectus at in nunc proin sit pharetra, tellus lorem. Nisl curabitur sed ac in. 
-      Sed molestie facilisis sapien venenatis. iaculis. Leo</p>
-      <button className='button-about'>  <b>Know More</b> </button>
+    <main className="main">
+      <Navbar></Navbar>
+      <section
+        className="first-section"
+        styles={{ backgroundImage: `url(${image})` }}
+      >
+        <div className="home-container">
+          <h1 className="title">
+            {" "}
+            DUCK <br /> <span> DIVE</span>{" "}
+          </h1>
+          <p>Find, buy & sell surf hardware </p>
+          <button className="link-seeItems">
+          <Link to="/items" >
+            See Items
+          </Link>
+          </button>
+          
+        </div>
+      </section>
+      <section className="second-section">
+      <div className="calculate-board-div">
+        <img src={image2} alt="surfers" />
+        <form  className="calculate-board-form" action="">
+        <div>
+        <h2>Find Your best board</h2>
+        <p>Dont know wich surfboard is better for you? <br /> we can help you</p>
+        </div>
+        <div className="div-inputs">
+        <label htmlFor="level" id="level" placeholder="Begginer" >Surf level</label>
+        <input type="select" name="username" className="input-board-ccalculate" value='#' onChange='#' />
+        </div>
+
+        <div className="div-inputs">
+        <label htmlFor="weigth">Weigth</label>
+        <input type="password" name="password"  className="input-board-ccalculate" value='#' onChange='#' />
+        </div>
+
+        <div className="div-inputs">
+        <label htmlFor="style">Style</label>
+        <input type="password" name="password"  className="input-board-ccalculate" value='#' onChange='#' />
+        </div>
+
+        <button type="submit"> Calculate</button>
+        </form>
       </div>
       </section>
-      <section className='second-section'>
-      <div className="explore"><h1>explore</h1></div>
-      <div>
-      <div className="row">
-  <div className="col-sm-6">
-    <div className="card">
-      <div className="card-body colorCard">
-        <h5 className="card-title"><FcSearch className="reactIcon" /></h5>
-        <p className="card-text">Search for Surf Items of your needs</p>
-        <Link to="/items" className="btn btn-dark">Serach Items</Link>
-      </div>
-    </div>
-  </div>
-  <div className="col-sm-6">
-    <div className="card">
-      <div className="card-body colorCard">
-        <h5 className="card-title"><MdSell className="reactIcon" /></h5>
-        <p className="card-text">Sell your Itens</p>
-        {loggedIn && (
-          <Link className="btn btn-dark" to="/profile"> create a Post </Link>
-      )}
-
-      {!loggedIn && (
-          <Link className="btn btn-dark" to="/login"> create a Post</Link>
-      )} 
-        {/* <a href="/profile" className="btn btn-dark">post Item</a> */}
-      </div>
-    </div>
-  </div>
-</div>
-      </div>
-      </section>
-
-      <MyFooter />
-    </div>
+    </main>
   );
 }
 

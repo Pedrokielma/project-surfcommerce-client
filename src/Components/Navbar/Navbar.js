@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 // import { Nav, Container, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
@@ -6,52 +6,89 @@ import './Navbar.css';
 import { FaSearch } from "react-icons/fa";
 import { GiSurfBoard } from "react-icons/gi";
 import axios from 'axios';
+import image from '../../images/logoduckdive.png'
+
 
 
 
 function Navbar() {
-  const [weatherData, setWeatherData] = useState(null)
-  const [lat, setLat] = useState("38")
-  const [lon, setLon] = useState("-9")
+  // const [weatherData, setWeatherData] = useState(null)
+  // const [lat, setLat] = useState("38")
+  // const [lon, setLon] = useState("-9")
+
+  const [active, setActive] = useState("nav__menu");
+  const [icon, setIcon] = useState("nav__toggler");
 
   const { loggedIn, user, logoutUser } = useContext(AuthContext);
 
-  const fetchWeather = async () => {
-    const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`)
-    setWeatherData(`${Math.ceil(response.data.main.temp - 273.15)}oC`)
-  };
+  // const fetchWeather = async () => {
+  //   const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`)
+  //   setWeatherData(`${Math.ceil(response.data.main.temp - 273.15)}oC`)
+  // };
 
-  useEffect(() => {
-    fetchWeather();
-  }, []);
+  // useEffect(() => {
+  //   fetchWeather();
+  // }, []);
+
+  
+  const navToggle = () => {
+    if (active === "nav__menu") {
+      setActive("nav__menu nav__active");
+    } else setActive("nav__menu");
+
+    // Icon Toggler
+    if (icon === "nav__toggler") {
+      setIcon("nav__toggler toggle");
+    } else setIcon("nav__toggler");
+  };
 
   return (
 
 
-    <nav className={'Navbar'}>
+    <nav className='nav'>
+<Link className="logo-link"to="/"> <img src={image} className='logo' alt="duckdive" /></Link>
 
-
-<Link className="link"to="/"> <GiSurfBoard className="logo" /></Link>
-      <Link className="link"to="/"> Home</Link>
-      <Link className="link" to="/items"> <FaSearch /> SurfItems</Link>
-      <p className="link">{weatherData}</p>
-
+ 
+      <ul className={active}>
+      <li className="nav__item">
+      <Link className="link home-link"to="/"> Home</Link>
+      </li>
+      <li className="nav__item">
+      <Link className="nav__link link" to="/items">Store</Link>
+      </li>
 
       {loggedIn && (
         <>
       
-          <button className="log" onClick={logoutUser}>Logout</button>
-          <Link className="log" to="/profile"> Profile</Link>
-          {/* <h4> hello, {user.username}</h4> */}
+          <li className="nav__item">
+          <Link className="sign nav__link link" to="/profile"> Profile</Link>
+          </li>
+          <li className="nav__item">
+          <button className="sign button nav__link link" onClick={logoutUser}>Logout</button>
+          </li>
+         
         </>
       )}
 
       {!loggedIn && (
         <>
-          <Link className="log" to="/signup"> Signup</Link>
-          <Link className="log" to="/login"> Login</Link>
+        <li className="nav__item">
+          <Link className="sign nav__link link" to="/signup"> Signup</Link>
+          </li>
+          
+          <li className="nav__item">
+          <Link className="sign nav__link link" to="/login"> Login</Link>
+          </li>
         </>
       )}
+      </ul>
+
+
+    <div onClick={navToggle} className={icon}>
+        <div className="line1"></div>
+        <div className="line2"></div>
+        <div className="line3"></div>
+      </div>
     </nav>
 
 

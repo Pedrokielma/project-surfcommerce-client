@@ -1,41 +1,165 @@
-.Navbar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #90a9bf;
+/* .Navbar {
+  display: flex;
+  justify-content: space-between;
+
+    background-color: white;
+    align-items: center;
+    padding: 14px 16px 14px 16px;
   }
-  
-  
-  .log {
-    border-right: none;
-    float:right;
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+ 
+  .button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
   }
   
   .link {
-    display: block;
     color: black;
-    text-align: center;
-    align-content: center;
-    align-items: center;
-    padding: 14px 16px;
+    
+    padding: 10px;
     text-decoration: none;
-    float: left;
-    border-right:1px solid #bbb;
+  }
+  .link:hover {
+    color: #4b7772;
+    
+  } */
+
+
+   .logo{
+     margin-left: 30px;
+    height: 50px;
+    width: 60px;
+  }
+
+
+
+
+
+  li {
+    list-style: none;
+  }
+
+  .link {
+    color: black;
+    
+    padding: 10px;
+    text-decoration: none;
+  }
+  .link:hover {
+    color: #4b7772;
+    
+  }
+ .home-link{
+   display: none;
+ }
+  
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    align-items: center;
+    padding: 14px 16px 14px 16px;
+    /* z-index: 1;
+    position: relative; */
   }
   
-  li a:hover:not(.active) {
-    background-color: #111;
+
+  .nav__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    padding: 0;
+    margin: 0;
+    
+  }
+  .nav__toggler {
+    display: none;
+  }
+  .nav__toggler div {
+    width: 2.5rem;
+    height: 0.2rem;
+    margin: 0.4rem;
+    background: black;
+    transition: 0.3s ease-in;
+  }
+  .button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
+
+ 
+
+
+
+  @media (max-width: 600px) {
+    .link {
+      padding: 5px;
+    }
+   
+    .nav__toggler {
+      display: block;
+      cursor: pointer;
+    }
+    .nav__menu {
+      display: block;
+      
+      position: absolute;
+      z-index: 0;
+      top: 63px;
+      left: 0;
+      padding-left: 0%;
+      height: 140px;
+      width: 50vw;
+      background: white;
+      flex-direction: column;
+      transform: translateX(-100%);
+      transition: 0.5s ease-in;
+    }
+    .logo-link{
+      display: none;
+    }
+    .nav {
+    justify-content: flex-start;
+    }
+    .home-link{
+      display: flex;
+      left: 0; 
+      border-bottom: 1px solid #c5ccd562;;
+    }
+    .nav__link{
+      display: flex;
+      left: 0;
+      border-bottom: 1px solid #c5ccd562;;
+    }
+  }
+
+  .nav__active {
+    transform: translateX(0);
+   
   }
   
-  .active {
-    background-color: #04AA6D;
+  /* Toggle Icon Animation */
+  
+  .toggle .line1 {
+    transform: rotate(-45deg) translate(-4px, 5px);
   }
-  .logo{
-    font-size: 2.00em;
+  .toggle .line2 {
+    opacity: 0;
   }
+  .toggle .line3 {
+    transform: rotate(45deg) translate(-4px, -5px);
+  }
+ 
+ 
+ 

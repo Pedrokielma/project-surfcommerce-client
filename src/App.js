@@ -11,6 +11,7 @@ import MyAdds from './pages/ProfilePage/MyAdds';
 import Favorites from './pages/ProfilePage/Favorites';
 import ItemDetails from './pages/ItemDetailsPage/ItemDetailsPage';
 import EditItemPage from './pages/EditItemPage/EditItemPage';
+import MyFooter from './Components/Footer/Footer'
  
 
 
@@ -28,7 +29,7 @@ function App() {
           path="/items"
           element={
             <>
-               <Navbar />
+              <Navbar />
               <ItemListPage />
             </>
           }
@@ -37,7 +38,7 @@ function App() {
         <Route path="/login" element={
             <>
             <Navbar />
-              <LoginPage />
+            <LoginPage />
               </>
           }/>
           <Route path="/signup" element={
@@ -85,6 +86,8 @@ function App() {
 <Favorites />
 }/>
       </Routes>
+
+      <MyFooter />
       
       
     </div>
