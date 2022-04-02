@@ -6,7 +6,7 @@ import './LoginPage.css';
 import { AuthContext } from '../../context/auth.context';
 
 function LoginPage() {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const { storeToken, authenticateUser } = useContext(AuthContext);
@@ -15,12 +15,12 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const handlePassword = (e) => setPassword(e.target.value);
-  const handleUsername = (e) => setUsername(e.target.value);
+  const handleEmail = (e) => setEmail(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const body = { username, password };
+    const body = { email, password };
 
     axios
       .post(`${process.env.REACT_APP_API_URL}/auth/login`, body)
@@ -33,12 +33,16 @@ function LoginPage() {
       .catch((err) => console.log(err));
   };
   return (
+    <div>
+    <nav className='nav-sign'>
+      <Link to='/'> DUCK <br /> DIVE</Link>
+    </nav>
     <section className="backgroundLogin">
     <div className="login-block">
       <h1 className="titleIn"> <b>Login</b></h1>
       <form  className="login-form" onSubmit={handleSubmit}>
-        <label htmlFor="username" id="username" placeholder="Username" >Username</label>
-        <input type="text" name="username" value={username} onChange={handleUsername} />
+        <label htmlFor="email" id="email" placeholder="Email" >Email</label>
+        <input type="text" name="email" value={email} onChange={handleEmail} />
 
         <label htmlFor="password">Password</label>
         <input type="password" name="password"  id="password" value={password} onChange={handlePassword} />
@@ -47,6 +51,7 @@ function LoginPage() {
       </form>
     </div>
     </section>
+    </div>
 
 /* <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <div class="logo"></div>
