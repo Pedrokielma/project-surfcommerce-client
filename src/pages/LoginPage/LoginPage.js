@@ -43,7 +43,7 @@ function LoginPage() {
         <label htmlFor="password">Password</label>
         <input type="password" name="password"  id="password" value={password} onChange={handlePassword} />
 
-        <button type="submit"> Login</button>
+        <button type="submit"> Login </button>
       </form>
     </div>
     </section>

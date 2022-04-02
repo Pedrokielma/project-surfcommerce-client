@@ -1,14 +1,87 @@
 .footer{
-    background-color: rgb(5, 5, 50);
+    background-color: black;
     color: white;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
 
 }
-.footer ul{
-    list-style: none;
-    padding: 0;
-    color: white;
+
+.first-footer-sec{
+display: flex;
+justify-content: space-around;
+height: 130px;
+padding-top: 30px;
 }
-.footer ul li a{
+.first-footer-sec .create-accont{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 250px;
+    height: 90px;
+}
+.first-footer-sec .create-accont button{
     color: white;
+    text-decoration: none;
+    font-size: 16px;
+    Width: 100px;
+    Height: 30px;
+    background-color: #4b7772;
+    border-radius: 6px;
+    border-style: none;
+}
+.first-footer-sec .create-accont p{
+    margin-bottom: 0;
+}
+.first-footer-sec h2 {
+    font-family: "Chivo", sans-serif;
+    font-weight: 900;
+    color: #4b7772;
+    margin-top: 10px;
+}
+
+
+
+
+.second-footer-sec{
+    display: flex;
+    justify-content: space-around;
+    height: 130px;
+}
+.second-footer-sec ul{
+   padding: 0;
+   margin: 0;
+}
+.second-footer-sec ul a{
+    color: white;
+    text-decoration: none;
+}
+.second-footer-sec .first-ul{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+}
+.second-footer-sec .second-ul{
+    display: flex;
+    justify-content: space-between;
+    width: 50px;;
+    }
+.second-footer-sec
+
+.react-icons-social ul a:hover{
+    color: white
+}
+
+
+
+.footer .footer-paragraf{
+    font-size: 12px;
+    padding-bottom: 100px;
+}
+
+@media (max-width: 600px) {
+    .footer{
+        font-size: 14px;
+    }
 }
 

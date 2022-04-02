@@ -15,7 +15,7 @@ function HomePage() {
     <main className="main">
       <Navbar></Navbar>
       <section
-        className="first-section"
+        id="first-section" className="first-section"
         styles={{ backgroundImage: `url(${image})` }}
       >
         <div className="home-container">
@@ -32,7 +32,7 @@ function HomePage() {
           
         </div>
       </section>
-      <section className="second-section">
+      <section id="second-section" className="second-section">
       <div className="calculate-board-div">
         <img src={image2} alt="surfers" />
         <form  className="calculate-board-form" action="">
