@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './LoginPage.css';
+import GoogleLogin from 'react-google-login';
+import { FcGoogle } from 'react-icons/fc'
 
 import { AuthContext } from '../../context/auth.context';
 
@@ -14,6 +16,14 @@ function LoginPage() {
 
   const navigate = useNavigate();
 
+  //google auth
+  const handleFailure = (result) => {
+    alert(result);
+  }
+  const handleLogin = (googleData) =>{
+    console.log(googleData)
+}
+//
   const handlePassword = (e) => setPassword(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
 
@@ -25,7 +35,7 @@ function LoginPage() {
     axios
       .post(`${process.env.REACT_APP_API_URL}/auth/login`, body)
       .then((response) => {
-        console.log('res.data', response.data);
+        console.log('res.data', response.data.authToken);
         storeToken(response.data.authToken);
         authenticateUser();
         navigate('/');
@@ -37,10 +47,10 @@ function LoginPage() {
     <nav className='nav-sign'>
       <Link to='/'> DUCK <br /> DIVE</Link>
     </nav>
-    <section className="backgroundLogin">
-    <div className="login-block">
-      <h1 className="titleIn"> <b>Login</b></h1>
-      <form  className="login-form" onSubmit={handleSubmit}>
+    <section className="background-sign">
+    <div className="sign-block">
+      <h1 className="title-sign"> <b>Login</b></h1>
+      <form  className="sign-form" onSubmit={handleSubmit}>
         <label htmlFor="email" id="email" placeholder="Email" >Email</label>
         <input type="text" name="email" value={email} onChange={handleEmail} />
 
@@ -49,26 +59,16 @@ function LoginPage() {
 
         <button type="submit"> Login </button>
       </form>
+
+
+      <div className='google-login'>
+      <a href="http://localhost:5005/auth/google"><FcGoogle className='FcGoogle' /><span> Sign in with Google </span></a>
+      </div>
+      
     </div>
     </section>
     </div>
 
-/* <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-<div class="logo"></div>
-<div class="login-block">
-    <h1>Login</h1>
-    <input type="text" value="" placeholder="Username" id="username" />
-    <input type="password" value="" placeholder="Password" id="password" />
-    <button>Submit</button>
-</div> */
-
-// // {/* <div class="logo"></div>
-// // <div class="login-block">
-// //     <h1>Login</h1>
-// //     <input type="text" value="" placeholder="Username" id="username" />
-// //     <input type="password" value="" placeholder="Password" id="password" />
-// //     <button>Submit</button> */}
-// </div>
   );
 }
 

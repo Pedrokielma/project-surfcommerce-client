@@ -25,7 +25,55 @@
     color: #4b7772;
 }
 
-.backgroundLogin{
+.background-sign{
     height: 100vh;
     width: 100vw;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
+
+.sign-block{
+    height: 80vh;
+    width: 50vw;
+    background-color: white;
+}
+
+
+.google-login {
+    
+    border: 1px solid transparent;
+    box-shadow: rgb(0 0 0 / 24%) 0px 2px 2px 0px, rgb(0 0 0 / 24%) 0px 0px 1px 0px;
+    height: 43px;
+    width: 180px;
+}
+.google-login a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.482);
+    font-size: 14px;
+    
+}
+.google-login a .FcGoogle{
+   font-size: 20px;
+   margin-left: 15px;
+   height: 43px;
+}
+.google-login a span{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    height: 43px;
+ }
+
+
+.google-login a:hover{
+    color: rgba(0, 0, 0, 0.482);
+}
+
