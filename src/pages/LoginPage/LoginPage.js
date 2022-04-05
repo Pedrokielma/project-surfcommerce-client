@@ -51,19 +51,27 @@ function LoginPage() {
     <div className="sign-block">
       <h1 className="title-sign"> <b>Login</b></h1>
       <form  className="sign-form" onSubmit={handleSubmit}>
-        <label htmlFor="email" id="email" placeholder="Email" >Email</label>
-        <input type="text" name="email" value={email} onChange={handleEmail} />
-
+      <div className='login-form-div'>
+        <label htmlFor="email" id="email"  >Email</label>
+        <input type="text" name="email" placeholder="Write your Email" value={email} onChange={handleEmail} />
+        </div>
+        <div className='login-form-div'>
         <label htmlFor="password">Password</label>
-        <input type="password" name="password"  id="password" value={password} onChange={handlePassword} />
-
+        <input type="password" name="password" placeholder="8-10 character password" id="password" value={password} onChange={handlePassword} />
+        </div>
         <button type="submit"> Login </button>
       </form>
+
+      
+      <hr className='or-div'/>
+      
 
 
       <div className='google-login'>
       <a href="http://localhost:5005/auth/google"><FcGoogle className='FcGoogle' /><span> Sign in with Google </span></a>
       </div>
+
+      <div className='direct-signin'> <p>New to Duck Dive?  <Link to='/signupPage'>Sign up</Link></p> </div>
       
     </div>
     </section>
