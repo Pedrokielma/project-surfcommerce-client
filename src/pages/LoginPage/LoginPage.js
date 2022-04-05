@@ -71,7 +71,7 @@ function LoginPage() {
       <a href="http://localhost:5005/auth/google"><FcGoogle className='FcGoogle' /><span> Sign in with Google </span></a>
       </div>
 
-      <div className='direct-signin'> <p>New to Duck Dive?  <Link to='/signupPage'>Sign up</Link></p> </div>
+      <div className='direct-signin'> <p>New to Duck Dive?  <Link to='/signup'>Sign up</Link></p> </div>
       
     </div>
     </section>
