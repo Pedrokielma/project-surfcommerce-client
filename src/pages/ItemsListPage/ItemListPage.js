@@ -51,15 +51,34 @@ function ItemsListPage() {
     setDisplayItems(filteredItems);
   };
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    console.log(event.target.value);
+  // const handleFormSubmit = (event) => {
+  //   event.preventDefault();
+  //   console.log(event.target.value);
    
-  };
+  // };
 
   return (
     <div className="items-page-main">
-    <Searchbar search={searchFilter} />
+    <Searchbar  search={searchFilter} />
+
+    <nav className='nav-search'>
+      <ul>
+      <li className="nav__item">
+          <Link className="sign nav__link link" to="/profile"> Profile</Link>
+          </li>
+          <li className="nav__item">
+          <Link className="sign nav__link link" to="/profile"> Profile</Link>
+          </li>
+          <li className="nav__item">
+          <Link className="sign nav__link link" to="/profile"> Profile</Link>
+          </li>
+          <li className="nav__item">
+          <Link className="sign nav__link link" to="/profile"> Profile</Link>
+          </li>
+        
+      </ul>
+    </nav>
+    <section className='item-list'>
 
       {/* <AddForm refreshItems={fetchItems} /> */}
       {displayItems.map((item) => {
@@ -100,7 +119,7 @@ function ItemsListPage() {
           </div> */}
       
      
- 
+          </section>
     </div>
 
 

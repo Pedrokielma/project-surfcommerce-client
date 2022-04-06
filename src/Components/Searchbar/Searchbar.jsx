@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import './Searchbar.css'
+import { FiSearch } from 'react-icons/fi'
 
 function Searchbar(props) {
   const [search, setSearch] = useState('');
@@ -8,10 +10,11 @@ function Searchbar(props) {
     props.search(e.target.value);
   };
 
+
   return (
-    <div>
-      <h4>Search Items:</h4>
-      <input type="text" value={search} onChange={handleChange} />
+    <div className='searchbar-div'>
+    
+      <input type="text" placeholder='Search' value={search} onChange={handleChange} /> <FiSearch className='serch-icon' />
     </div>
   );
 }

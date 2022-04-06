@@ -1,20 +1,30 @@
-import { React, useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { React, useState, useContext, useEffect  } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../../context/auth.context';
 import './AddItem.css';
 
 
+
 import ProfileNav from "../../Components/ProfileNav/ProfileNav";
 
   function AddItem() {
-    const { user, userAuth } = useContext(AuthContext);
+    const { user, storeToken, authenticateUser} = useContext(AuthContext);
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
     const [category, setCategory] = useState(0);
     const [price, setPrice] = useState('');
+    
+
+    const [searchParams, setSearchParams] = useSearchParams();
+const token = searchParams.get("token");
+
+useEffect(() => {
+  storeToken(token);
+    authenticateUser();
+}, []);
     
   
     const navigate = useNavigate();

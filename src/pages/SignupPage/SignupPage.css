@@ -38,22 +38,22 @@
     width: 50vw;
     background-color: white;
 }
-.sign-form{
+.sign-in-form{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 40%;
+    height: 50%;
 }
-.sign-form div{
+.sign-in-form div{
     display: flex;
     flex-direction: column;
 }
-.sign-form div label{
+.sign-in-form div label{
     width: 90px;
 }
 
-.sign-form input{
+.sign-in-form input{
   background-color: rgba(189, 186, 186, 0.332);
   border: none;
   width: 329px;
@@ -63,7 +63,7 @@
 
 
 
-.sign-form button{
+.sign-in-form button{
     color: white;
     text-decoration: none;
     font-size: 20px;
@@ -132,7 +132,7 @@ text-decoration: none;
    
   
   
-    .sign-form button{
+    .sign-in-form button{
       font-size: 18px;
     Width: 260px;
     Height: 45px;
@@ -142,7 +142,7 @@ text-decoration: none;
     Width: 260px;
     Height: 45px;
     }
-    .sign-form input{
+    .sign-in-form input{
       width: 290px;
        height: 45px;
     }
@@ -152,7 +152,7 @@ text-decoration: none;
     }
   }@media (max-width: 414px){
   
-    .sign-form button{
+    .sign-in-form button{
       font-size: 16px;
     Width: 200px;
     Height: 35px;
@@ -162,7 +162,7 @@ text-decoration: none;
         Width: 260px;
         Height: 45px;
     }
-    .sign-form input{
+    .sign-in-form input{
       width: 240px;
        height: 35px;
     }

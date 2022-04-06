@@ -16,14 +16,7 @@ function LoginPage() {
 
   const navigate = useNavigate();
 
-  //google auth
-  const handleFailure = (result) => {
-    alert(result);
-  }
-  const handleLogin = (googleData) =>{
-    console.log(googleData)
-}
-//
+  
   const handlePassword = (e) => setPassword(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
 

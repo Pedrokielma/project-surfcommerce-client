@@ -17,11 +17,13 @@ import { AuthContext } from '../../context/auth.context';
 function SignupPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
 
   const navigate = useNavigate();
 
   const handlePassword = (e) => setPassword(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
+  const handleName = (e) => setName(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,8 +60,10 @@ function SignupPage() {
     <section className="background-sign">
     <div className="sign-block">
       <h1 className="title-sign"> <b>Signup</b></h1>
-      <form  className="sign-form" onSubmit={handleSubmit}>
+      <form  className="sign-in-form" onSubmit={handleSubmit}>
       <div className='login-form-div'>
+      <label htmlFor="name" id="name"  >Name</label>
+        <input type="text" name="name" placeholder="Write your Name" value={name} onChange={handleName} />
         <label htmlFor="email" id="email"  >Email</label>
         <input type="text" name="email" placeholder="Write your Email" value={email} onChange={handleEmail} />
         </div>
