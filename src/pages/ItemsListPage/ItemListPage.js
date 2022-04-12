@@ -1,29 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import Searchbar from '../../Components/Searchbar/Searchbar'
-import './ItemListPage.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import Searchbar from "../../Components/Searchbar/Searchbar";
+import "./ItemListPage.css";
+import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 // import { ThemeContext } from '../../context/theme.context';
+
+// import LocationsModal from '../../Components/LocationModal/LocationsModal.jsx'
 
 function ItemsListPage() {
   const [items, setItems] = useState([]);
   const [displayItems, setDisplayItems] = useState([]);
-  const storedToken = localStorage.getItem('authToken');
-  
+  const storedToken = localStorage.getItem("authToken");
 
   // const { theme } = useContext(ThemeContext);
 
   const fetchItems = async () => {
     try {
-    
-
-      let response = await axios.get(`${process.env.REACT_APP_API_URL}/api/items`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      });
+      let response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/items`,
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      );
       setItems(response.data);
-      setDisplayItems(response.data)
-
-
+      setDisplayItems(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -35,14 +36,17 @@ function ItemsListPage() {
 
   const favoriteItem = (itemId) => {
     axios
-      .put(`${process.env.REACT_APP_API_URL}/api/favorite/${itemId}`, {}, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
+      .put(
+        `${process.env.REACT_APP_API_URL}/api/favorite/${itemId}`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      )
       .then(() => console.log(itemId))
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(err));
   };
 
- 
   const searchFilter = (searchQuery) => {
     let filteredItems = items.filter((item) =>
       item.title.toLowerCase().startsWith(searchQuery.toLowerCase())
@@ -54,95 +58,70 @@ function ItemsListPage() {
   // const handleFormSubmit = (event) => {
   //   event.preventDefault();
   //   console.log(event.target.value);
-   
+
   // };
 
   return (
     <div className="items-page-main">
-    <Searchbar  search={searchFilter} />
+      <div className="items-serchbar">
+      <Searchbar  search={searchFilter} />
+      </div>
+      <div className="nav-filter">
+        <nav className="nav-filter-one">
+          <ul>
+            <li>
+              <Link to="/profile"> All</Link>
+            </li>
+            <li>
+              <Link to="/profile"> Wet Suit</Link>
+            </li>
+            <li>
+              <Link to="/profile"> Boards</Link>
+            </li>
+            <li>
+              <Link to="/profile"> Assesories</Link>
+            </li>
+          </ul>
+        </nav>
+        <nav className="nav-filter-two">
+          <ul>
+         <li><button><span>Location</span> <MdOutlineKeyboardArrowDown className="nav-filter-icons"/> </button> </li> 
+         {/* <LocationsModal /> */}
 
-    <nav className='nav-search'>
-      <ul>
-      <li className="nav__item">
-          <Link className="sign nav__link link" to="/profile"> Profile</Link>
-          </li>
-          <li className="nav__item">
-          <Link className="sign nav__link link" to="/profile"> Profile</Link>
-          </li>
-          <li className="nav__item">
-          <Link className="sign nav__link link" to="/profile"> Profile</Link>
-          </li>
-          <li className="nav__item">
-          <Link className="sign nav__link link" to="/profile"> Profile</Link>
-          </li>
-        
-      </ul>
-    </nav>
-    <section className='item-list'>
+          <li><button><span>Prices</span> <MdOutlineKeyboardArrowDown className="nav-filter-icons"/></button>  </li>
+          </ul>
+        </nav>
+      </div>
 
-      {/* <AddForm refreshItems={fetchItems} /> */}
-      {displayItems.map((item) => {
-        return (
-         
-            <div className="courses-container">
-	<div className="course">
-		<div styles={{ backgroundImage:`url('${item.image}')` }}>
-			
-		</div>
-		<div className="course-info">
-			<div className="progress-container">
-				
-			<h6>
-					<b>{item.price}$</b>
-          </h6>
-			</div>
-			<h2><Link to={`/items/${item._id}`}>{item.title} </Link> </h2>
-      <h6>{item.category}</h6>
-			
-      <button className="btn" onClick={() => favoriteItem(item._id)}>Add to favorite</button>
-		</div>
-	</div>
-</div>
+      <section className="item-list">
+        {/* <AddForm refreshItems={fetchItems} /> */}
+        {displayItems.map((item) => {
+          return (
+            <div className="single-item">
+              <div className="item-image" styles={{ backgroundImage: `url('${item.image}')` }}></div>
+              <div className="item-info">
+              <h6 className="item-category"> <h6>{item.category}</h6></h6>
+              <h4 className="item-name">
+                  <Link to={`/items/${item._id}`}>{item.title} </Link>{" "}
+                </h4>
+              <h6 className="item-price">
+                <b>{item.price}$</b>
+              </h6> 
+              </div>            
 
-        
+                <button className="btn" onClick={() => favoriteItem(item._id)}>
+                  Add to favorite
+                </button>
+              </div>
+          
+          );
+        })}
 
-        );
-      })}
-
-
-      {/* <div key={item._id}>
-            <Link to={`/items/${item._id}`}>
-              <h3>{item.title}</h3>
-            </Link>
-            {console.log(item._id)}
-            <button onClick={() => favoriteItem(item._id)}>Add to favorite</button>
-          </div> */}
-      
-     
-          </section>
+       
+      </section>
     </div>
-
-
   );
 }
 
 export default ItemsListPage;
-  {/* <div key={item._id} className="courses-container">
-	<div className="course">
-		<div styles={{ backgroundImage:`url(${item.image})` }}>
-			
-		</div>
-		<div className="course-info">
-			<div className="progress-container">
-				<div className="progress"></div>
-				<span className="progress-text">
-					6/9 Challenges
-				</span>
-			</div>
-			<h2>{item.title}</h2>
-      <h6>{item.description}</h6>
-			<button className="btn">Continue</button>
-      <button className="btn" onClick={() => favoriteItem(item._id)}>Add to favorite</button>
-		</div>
-	</div>
-</div> */}
+
