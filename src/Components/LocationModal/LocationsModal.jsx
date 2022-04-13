@@ -1,40 +1,68 @@
-// import React from 'react'
-// import ReactDom from 'react-dom'
+import React, { useState } from 'react';
+import ReactDom from 'react-dom'
+import './LocationsModal.css'
 
-// function LocationsModal() {
 
-//     const MODAL_STYLES = {
-//         position: 'fixed',
-//         top: '50%',
-//         left: '50%',
-//         transform: 'translate(-50%, -50%)',
-//         backgroundColor: '#FFF',
-//         padding: '50px',
-//         zIndex: 1000
-//       }
-      
-//       const OVERLAY_STYLES = {
-//         position: 'fixed',
-//         top: 0,
-//         left: 0,
-//         right: 0,
-//         bottom: 0,
-//         backgroundColor: 'rgba(0, 0, 0, .7)',
-//         zIndex: 1000
-//       }
-      
 
-//     return ReactDom.createPortal(
-//         <>
-//           <div style={OVERLAY_STYLES} />
-//           <div style={MODAL_STYLES}>
-//             <button onClick={onClose}>Close Modal</button>
-//             {children}
-//           </div>
-//         </>,
-//         document.getElementById('portal')
-//       )
+// const handleFormSubmit = (event) => {
+  //   event.preventDefault();
+  //   console.log(event.target.value);
+
+  // };
+  
+
+function LocationsModal({ open, onClose, props }) {
+    const [location, setLocation] = useState('');
+
+
+    const handleSelect = (e) => {
+        setLocation(e.target.value);
+        props.location(e.target.value);
+        console.log(e.target.value)
+      };
+
+      const handleFormSubmit = (event) => {
+          event.preventDefault();
+          console.log(event.target.value);
+          onClose()
+
+        };
+
+  if (!open) return null
+
+  return ReactDom.createPortal(
+    <>
+      <div className='overlay_styles'/>
+      <div className='MODAL_STYLES'>
+      <form>
+    <div>
+  <input type="checkbox" onChange={handleSelect} value="lisbon" />
+  <label htmlFor="vehicle1"> Lisbon</label><br />
+  </div>
+  <div>
+  <input type="checkbox" onChange={handleSelect} value="porto" />
+  <label htmlFor="vehicle2"> Porto</label><br />
+  </div>
+  <div>
+  <input type="checkbox" onChange={handleSelect}  value="peniche" />
+  <label htmlFor="vehicle3"> Peniche</label><br />
+    </div>
+    <div>
+  <input type="checkbox" onChange={handleSelect}  value="alentejo" />
+  <label htmlFor="vehicle3"> Alentejo</label><br />
+    </div>
+    <div>
+  <input type="checkbox" onChange={handleSelect}  value="algarve" />
+  <label htmlFor="vehicle3"> Algarve</label><br /><br />
+    </div>
     
-// }
+  <button type="submit" onClick={handleFormSubmit}>Close Modal</button>
+</form> 
+        
+      </div>
+    </>,
+    document.getElementById('portal')
+  )
+}
 
-// export default LocationsModal
+export default LocationsModal;

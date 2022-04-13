@@ -6,14 +6,23 @@ import "./ItemListPage.css";
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 // import { ThemeContext } from '../../context/theme.context';
 
-// import LocationsModal from '../../Components/LocationModal/LocationsModal.jsx'
+import LocationsModal from '../../Components/LocationModal/LocationsModal.jsx'
+
+
+
 
 function ItemsListPage() {
   const [items, setItems] = useState([]);
   const [displayItems, setDisplayItems] = useState([]);
+  
   const storedToken = localStorage.getItem("authToken");
 
-  // const { theme } = useContext(ThemeContext);
+  // butons to filter location and price
+  const [isOpen, setIsOpen] = useState(false)
+
+  
+
+ 
 
   const fetchItems = async () => {
     try {
@@ -85,8 +94,18 @@ function ItemsListPage() {
         </nav>
         <nav className="nav-filter-two">
           <ul>
-         <li><button><span>Location</span> <MdOutlineKeyboardArrowDown className="nav-filter-icons"/> </button> </li> 
+         
+        <button onClick={() => setIsOpen(true)}><span>Location</span> <MdOutlineKeyboardArrowDown className="nav-filter-icons"/> </button> 
+
+        <LocationsModal location={searchFilter} open={isOpen} onClose={() => setIsOpen(false)} />
+   
+          
+         {/* <button ><span>Location</span> <MdOutlineKeyboardArrowDown className="nav-filter-icons"/> </button> */}
          {/* <LocationsModal /> */}
+         
+  
+         
+        
 
           <li><button><span>Prices</span> <MdOutlineKeyboardArrowDown className="nav-filter-icons"/></button>  </li>
           </ul>

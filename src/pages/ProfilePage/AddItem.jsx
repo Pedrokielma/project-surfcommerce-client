@@ -16,6 +16,7 @@ import ProfileNav from "../../Components/ProfileNav/ProfileNav";
     const [image, setImage] = useState('');
     const [category, setCategory] = useState(0);
     const [price, setPrice] = useState('');
+    const [location, setLocation] = useState('');
     
 
     const [searchParams, setSearchParams] = useSearchParams();
@@ -31,7 +32,7 @@ useEffect(() => {
   
     const handleSubmit = (e) => {
       e.preventDefault();
-    const body = { title, description, image, category, price, user: user._id }
+    const body = { title, description, image, category, price, location, user: user._id }
     axios
         .post(`${process.env.REACT_APP_API_URL}/api/items`, body)
         .then((response) => {
@@ -41,6 +42,7 @@ useEffect(() => {
           setImage('');
           setCategory(0);
           setPrice('');
+          setLocation('');
 
 
           navigate('/items');
@@ -66,6 +68,8 @@ useEffect(() => {
           <input type="text" onChange={(e) => setCategory(e.target.value)} />
           <label htmlFor="title">Price</label>
           <input type="text" onChange={(e) => setPrice(e.target.value)} />
+          <label htmlFor="title">Location</label>
+          <input type="text" onChange={(e) => setLocation(e.target.value)} />
 
     <button type="submit"> Login</button>
   </form>
