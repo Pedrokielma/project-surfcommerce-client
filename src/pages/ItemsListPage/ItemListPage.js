@@ -64,6 +64,15 @@ function ItemsListPage() {
     setDisplayItems(filteredItems);
   };
 
+  const locationFilter = (filters, category) => {
+    // let locatedItems = items.filter((item) =>
+    //   item.location.toLowerCase().startsWith(searchQuery.toLowerCase())
+    // );
+    console.log("epa", filters);
+    // setDisplayItems(locatedItems);
+  };
+
+
   // const handleFormSubmit = (event) => {
   //   event.preventDefault();
   //   console.log(event.target.value);
@@ -97,7 +106,7 @@ function ItemsListPage() {
          
         <button onClick={() => setIsOpen(true)}><span>Location</span> <MdOutlineKeyboardArrowDown className="nav-filter-icons"/> </button> 
 
-        <LocationsModal location={searchFilter} open={isOpen} onClose={() => setIsOpen(false)} />
+        <LocationsModal locationFilter={filters => locationFilter(filters, "states")} open={isOpen} onClick={() => setIsOpen(false)} />
    
           
          {/* <button ><span>Location</span> <MdOutlineKeyboardArrowDown className="nav-filter-icons"/> </button> */}
