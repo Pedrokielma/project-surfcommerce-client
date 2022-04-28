@@ -19,7 +19,7 @@ function ItemsListPage() {
 
   // butons to filter location and price
   const [isOpen, setIsOpen] = useState(false)
-
+  
   
 
  

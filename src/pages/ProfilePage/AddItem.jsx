@@ -19,13 +19,13 @@ import ProfileNav from "../../Components/ProfileNav/ProfileNav";
     const [location, setLocation] = useState('');
     
 
-    const [searchParams, setSearchParams] = useSearchParams();
-const token = searchParams.get("token");
+//     const [searchParams, setSearchParams] = useSearchParams();
+// const token = searchParams.get("token");
 
-useEffect(() => {
-  storeToken(token);
-    authenticateUser();
-}, []);
+// useEffect(() => {
+//   storeToken(token);
+//     authenticateUser();
+// }, []);
     
   
     const navigate = useNavigate();

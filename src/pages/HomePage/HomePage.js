@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import "./HomePage.css";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import { FcSearch } from "react-icons/fc";
 import { MdSell } from "react-icons/md";
@@ -9,7 +9,25 @@ import image from "../../images/backgroundImage.jpg";
 import image2 from '../../images/image 26.jpg'
 
 function HomePage() {
-  const { loggedIn } = useContext(AuthContext);
+
+  const { loggedIn, isLoading } = useContext(AuthContext);
+
+  
+  const { user, storeToken, authenticateUser} = useContext(AuthContext);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const token = searchParams.get("token");
+
+
+
+ 
+  useEffect(() => {
+if(!loggedIn && isLoading){
+    storeToken(token);
+      authenticateUser();
+}
+  }, []);
+
 
   return (
     <main className="main">
