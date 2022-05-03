@@ -67,7 +67,7 @@ import ProfileNav from "../../Components/ProfileNav/ProfileNav";
           <label htmlFor="title">Category</label>
           <input type="text" onChange={(e) => setCategory(e.target.value)} />
           <label htmlFor="title">Price</label>
-          <input type="text" onChange={(e) => setPrice(e.target.value)} />
+          <input type="number" onChange={(e) => setPrice(e.target.value)} />
           <label htmlFor="title">Location</label>
           <input type="text" onChange={(e) => setLocation(e.target.value)} />
 

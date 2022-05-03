@@ -11,7 +11,7 @@ import './LocationsModal.css'
   // };
   const locationSelected = [];
 
-function LocationsModal({ open, onClick, locationFilter }) {
+function LocationsModal(props) {
     const [location, setLocation] = useState('');
     let index;
     
@@ -25,20 +25,24 @@ function LocationsModal({ open, onClick, locationFilter }) {
         }
         
         setLocation(locationSelected); 
-        locationFilter(locationSelected);
+        props.filters(locationSelected);
         console.log("opa", locationSelected);
 
       };
 
-      const handleFormSubmit = (event) => {
-          event.preventDefault();
-    
-          console.log(location);
-          onClick()
+      const handleFormSubmit = (e) => {
+          e.preventDefault();
+
+          
+          // console.log(location);
+
+          props.submit(location);
+          props.open()
+
 
         };
 
-  if (!open) return null
+  if (!props.open) return null
 
   return ReactDom.createPortal(
     <>
@@ -46,23 +50,23 @@ function LocationsModal({ open, onClick, locationFilter }) {
       <div className='MODAL_STYLES'>
       <form>
     <div>
-  <input type="checkbox" onChange={handleSelect} value="one" />
+  <input type="checkbox" onChange={handleSelect} value='1' />
   <label htmlFor="vehicle1"> Lisbon</label><br />
   </div>
   <div>
-  <input type="checkbox" onChange={handleSelect} value="two" />
+  <input type="checkbox" onChange={handleSelect} value="2" />
   <label htmlFor="vehicle2"> Porto</label><br />
   </div>
   <div>
-  <input type="checkbox" onChange={handleSelect}  value="three" />
+  <input type="checkbox" onChange={handleSelect}  value="3" />
   <label htmlFor="vehicle3"> Peniche</label><br />
     </div>
     <div>
-  <input type="checkbox" onChange={handleSelect}  value="four" />
+  <input type="checkbox" onChange={handleSelect}  value="4" />
   <label htmlFor="vehicle3"> Alentejo</label><br />
     </div>
     <div>
-  <input type="checkbox" onChange={handleSelect}  value="five" />
+  <input type="checkbox" onChange={handleSelect}  value="5" />
   <label htmlFor="vehicle3"> Algarve</label><br /><br />
     </div>
     

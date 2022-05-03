@@ -64,20 +64,30 @@ function ItemsListPage() {
     setDisplayItems(filteredItems);
   };
 
-  const locationFilter = (filters, category) => {
-    // let locatedItems = items.filter((item) =>
-    //   item.location.toLowerCase().startsWith(searchQuery.toLowerCase())
-    // );
+  const locationFilter = (filters) => {
+    console.log(displayItems)
     console.log("epa", filters);
     // setDisplayItems(locatedItems);
   };
 
 
-  // const handleFormSubmit = (event) => {
-  //   event.preventDefault();
-  //   console.log(event.target.value);
+  const handleFormSubmit = (loc) => {
 
-  // };
+   
+    let submitFilteredItems = items.filter((item) =>
+    loc.includes(item.location)
+  );
+
+  
+
+    setIsOpen(false)
+    setDisplayItems(submitFilteredItems);
+
+    console.log(loc);
+    console.log(displayItems)
+    console.log(isOpen);
+
+  };
 
   return (
     <div className="items-page-main">
@@ -106,7 +116,13 @@ function ItemsListPage() {
          
         <button onClick={() => setIsOpen(true)}><span>Location</span> <MdOutlineKeyboardArrowDown className="nav-filter-icons"/> </button> 
 
-        <LocationsModal locationFilter={filters => locationFilter(filters, "states")} open={isOpen} onClick={() => setIsOpen(false)} />
+        <LocationsModal 
+        filters={filters => locationFilter(filters)} 
+        open={isOpen} 
+        onClick={() => setIsOpen(false)} 
+        submit={location => handleFormSubmit(location)}
+        
+        />
    
           
          {/* <button ><span>Location</span> <MdOutlineKeyboardArrowDown className="nav-filter-icons"/> </button> */}
@@ -126,7 +142,10 @@ function ItemsListPage() {
         {displayItems.map((item) => {
           return (
             <div className="single-item">
-              <div className="item-image" styles={{ backgroundImage: `url('${item.image}')` }}></div>
+            
+              <div className="item-image" >
+              <img alt="" src={`${item.image}`}/>
+              </div>
               <div className="item-info">
               <h6 className="item-category"> <h6>{item.category}</h6></h6>
               <h4 className="item-name">
