@@ -11,3 +11,10 @@
 
 DuckDive is a market place for surfers in Portugal to trade their used items, and give a second life to their equipment. On this website you can create ads and sell the items you no longer use, as well as find cheaper surfing equipment.
 Furthermore we have a tool for those who are not sure about their ideal board size and what equipment would work best for their surfing profile! Check it out on the link above and feel free to browse our site!
+
+
+### Backend (repository: project-surfComerce-server) ###
+
+[backend rep](https://github.com/Pedrokielma/project-surfComerce-server "backend rep")
+
+To better understand the code, you can look at "project-surfComerce-server" repository where you can find the entire backend.
