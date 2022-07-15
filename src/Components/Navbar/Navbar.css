@@ -5,9 +5,6 @@
   }
 
 
-
-
-
   li {
     list-style: none;
   }
@@ -22,10 +19,7 @@
     color: #4b7772;
     
   }
- .home-link{
-   display: none;
- }
-  
+
   .nav {
     display: flex;
     justify-content: space-between;
@@ -106,7 +100,7 @@
       left: 0; 
       border-bottom: 1px solid #c5ccd562;;
     }
-    .nav__link{
+    .link{
       display: flex;
       left: 0;
       border-bottom: 1px solid #c5ccd562;;

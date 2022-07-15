@@ -1,15 +1,13 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState } from "react";
 // import { Nav, Container, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../../context/auth.context';
-import './Navbar.css';
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/auth.context";
+import "./Navbar.css";
 import { FaSearch } from "react-icons/fa";
 import { GiSurfBoard } from "react-icons/gi";
-import axios from 'axios';
-import image from '../../images/logoduckdive.png'
-
-
-
+import axios from "axios";
+import image from "../../images/logoduckdive.png";
+import Navlink from "../Navlink/Navlink.jsx";
 
 function Navbar() {
   // const [weatherData, setWeatherData] = useState(null)
@@ -21,16 +19,6 @@ function Navbar() {
 
   const { loggedIn, user, logoutUser } = useContext(AuthContext);
 
-  // const fetchWeather = async () => {
-  //   const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`)
-  //   setWeatherData(`${Math.ceil(response.data.main.temp - 273.15)}oC`)
-  // };
-
-  // useEffect(() => {
-  //   fetchWeather();
-  // }, []);
-
-  
   const navToggle = () => {
     if (active === "nav__menu") {
       setActive("nav__menu nav__active");
@@ -43,64 +31,53 @@ function Navbar() {
   };
 
   return (
+    <nav className="nav">
+      <Link className="logo-link" to="/">
+        <img src={image} className="logo" alt="duckdive" />
+      </Link>
 
-
-    <nav className='nav'>
-<Link className="logo-link"to="/"> <img src={image} className='logo' alt="duckdive" /></Link>
-
- 
       <ul className={active}>
-      <li className="nav__item">
-      <Link className="link home-link"to="/"> Home</Link>
-      </li>
-      <li className="nav__item">
-      <Link className="nav__link link" to="/items">Store</Link>
-      </li>
+        <Link className="link" to="/items">
+          Store
+        </Link>
+        {loggedIn && (
+          <>
+            <Link className="link" to="/profile">
+              Profile
+            </Link>
 
-      {loggedIn && (
-        <>
-      
-          <li className="nav__item">
-          <Link className="sign nav__link link" to="/profile"> Profile</Link>
-          </li>
-          <li className="nav__item">
-          <button className="sign button nav__link link" onClick={logoutUser}>Logout</button>
-          </li>
-         
-        </>
-      )}
+            <button className="button link" onClick={logoutUser}>
+              Logout
+            </button>
+          </>
+        )}
 
-      {!loggedIn && (
-        <>
-        <li className="nav__item">
-          <Link className="sign nav__link link" to="/signup"> Signup</Link>
-          </li>
-          
-          <li className="nav__item">
-          <Link className="sign nav__link link" to="/login"> Login</Link>
-          </li>
-        </>
-      )}
+        {!loggedIn && (
+          <>
+            <Link className="link" to="/signup">
+              Signup
+            </Link>
+
+            <Link className="link" to="/login">
+              Login
+            </Link>
+          </>
+        )}
       </ul>
 
-
-    <div onClick={navToggle} className={icon}>
+      <div onClick={navToggle} className={icon}>
         <div className="line1"></div>
         <div className="line2"></div>
         <div className="line3"></div>
       </div>
     </nav>
-
-
-
-
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
 
-
-{/* <Navbar bg="light" expand="lg">
+{
+  /* <Navbar bg="light" expand="lg">
   <Container fluid>
     <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
     <Navbar.Toggle aria-controls="navbarScroll" />
@@ -135,4 +112,5 @@ export default Navbar
       </Form>
     </Navbar.Collapse>
   </Container>
-</Navbar> */}
+</Navbar> */
+}

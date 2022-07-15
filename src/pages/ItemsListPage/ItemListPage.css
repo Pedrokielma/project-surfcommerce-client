@@ -101,6 +101,8 @@
     display: flex;
 	flex-wrap: wrap;
 	align-items: center;
+    margin-left: 60px;
+    margin-top: 90px;
 }
 .single-item{
     width: 210px;
