@@ -1,18 +1,10 @@
-// import React, { useState, useContext } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-// import axios from 'axios';
-// import './SignupPage.css';
-// import { FcGoogle } from 'react-icons/fc'
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './SignupPage.css';
-import GoogleLogin from 'react-google-login';
 import { FcGoogle } from 'react-icons/fc'
+import SubmmitButton from '../../Components/SubmmitButton/SubmmitButton';
 
-import { AuthContext } from '../../context/auth.context';
-
-
+import './SignupPage.css';
 
 function SignupPage() {
   const [email, setEmail] = useState('');
@@ -41,19 +33,6 @@ function SignupPage() {
 
    
      <div>
-    {/* <div className="login-block">
-      <h1 className="titleIn"> <b>Signup</b></h1>
-      <form  className="login-form" onSubmit={handleSubmit}>
-        <label htmlFor="email" id="email" placeholder="Email" >Email</label>
-        <input type="text" name="email" value={email} onChange={handleEmail} />
-
-        <label htmlFor="password">Password</label>
-        <input type="password" name="password"  id="password" value={password} onChange={handlePassword} />
-
-        <button type="submit"> Sign up</button>
-      </form>
-    </div> */}
-
     <nav className='nav-sign'>
       <Link to='/'> DUCK <br /> DIVE</Link>
     </nav>
@@ -71,7 +50,7 @@ function SignupPage() {
         <label htmlFor="password">Password</label>
         <input type="password" name="password" placeholder="8-10 character password" id="password" value={password} onChange={handlePassword} />
         </div>
-        <button type="submit"> Sign up </button>
+        <SubmmitButton  content='Sign up' />
       </form>
 
       

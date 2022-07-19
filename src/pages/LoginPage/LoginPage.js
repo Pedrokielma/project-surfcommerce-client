@@ -1,11 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import './LoginPage.css';
-import GoogleLogin from 'react-google-login';
-import { FcGoogle } from 'react-icons/fc'
-
 import { AuthContext } from '../../context/auth.context';
+import axios from 'axios';
+import { FcGoogle } from 'react-icons/fc'
+import SubmmitButton from '../../Components/SubmmitButton/SubmmitButton';
+
+import './LoginPage.css';
+
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -52,7 +53,7 @@ function LoginPage() {
         <label htmlFor="password">Password</label>
         <input type="password" name="password" placeholder="8-10 character password" id="password" value={password} onChange={handlePassword} />
         </div>
-        <button type="submit"> Login </button>
+        <SubmmitButton  content='Login' />
       </form>
 
       

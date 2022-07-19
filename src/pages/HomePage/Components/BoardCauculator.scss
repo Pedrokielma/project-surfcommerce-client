@@ -1,0 +1,31 @@
+.calculate-board-div {
+    display: flex;
+    background-color: white;
+    height: 80vh;
+    width: 80vw;
+
+    img {
+        height: auto;
+        width: 60%;
+      }
+      .calculate-board-form {
+        padding-top: 50px;
+        width: 400px;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+      }
+      .input-board-ccalculate {
+        background-color: rgba(189, 186, 186, 0.332);
+        border: none;
+        width: 329px;
+        height: 51px;
+        border-radius: 6px;
+      }
+      .div-inputs {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+  }
