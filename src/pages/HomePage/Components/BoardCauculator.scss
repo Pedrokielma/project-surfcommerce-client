@@ -29,3 +29,26 @@
         flex-direction: column;
       }
   }
+
+  @media (max-width: 1100px) {
+    .calculate-board-div  {
+        justify-content: center;
+        img{
+            display: none;
+        }
+    }
+  }
+
+  @media (max-width: 700px) {
+      .input-board-ccalculate {
+        width: 290px;
+        height: 45px;
+      }
+  }
+
+  @media (max-width: 414px) {
+    .input-board-ccalculate {
+      width: 240px;
+      height: 35px;
+    }
+  }

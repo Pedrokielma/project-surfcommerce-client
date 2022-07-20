@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/auth.context";
 import image from "../../images/backgroundImage.jpg";
 import image2 from "../../images/image 26.jpg";
 import Navbar from "../../Components/Navbar/Navbar";
-// import BoardCauculator from './Components/BoardCauculator.jsx'
+import BoardCauculator from './Components/BoardCauculator.jsx'
 import SubmmitButton from "../../Components/SubmmitButton/SubmmitButton";
 
 import "./HomePage.css";
@@ -44,53 +44,7 @@ function HomePage() {
         </div>
       </section>
       <section id="second-section" className="second-section">
-        <div className="calculate-board-div">
-          <img src={image2} alt="surfers" />
-          <form className="calculate-board-form" action="">
-            <div>
-              <h2>Find Your best board</h2>
-              <p>
-                Dont know wich surfboard is better for you? <br /> we can help
-                you
-              </p>
-            </div>
-            <div className="div-inputs">
-              <label htmlFor="level" id="level" placeholder="Begginer">
-                Surf level
-              </label>
-              <input
-                type="select"
-                name="username"
-                className="input-board-ccalculate"
-                value="#"
-                onChange="#"
-              />
-            </div>
-
-            <div className="div-inputs">
-              <label htmlFor="weigth">Weigth</label>
-              <input
-                type="password"
-                name="password"
-                className="input-board-ccalculate"
-                value="#"
-                onChange="#"
-              />
-            </div>
-
-            <div className="div-inputs">
-              <label htmlFor="style">Style</label>
-              <input
-                type="password"
-                name="password"
-                className="input-board-ccalculate"
-                value="#"
-                onChange="#"
-              />
-            </div>
-            <SubmmitButton content="Calculate" />
-          </form>
-        </div>
+      <BoardCauculator />
       </section>
     </main>
   );

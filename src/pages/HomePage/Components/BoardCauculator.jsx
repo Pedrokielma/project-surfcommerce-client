@@ -1,6 +1,6 @@
 import React from "react";
-import image2 from "../../images/image 26.jpg";
-import SubmmitButton from "../../Components/SubmmitButton/SubmmitButton";
+import image2 from "../../../images/image 26.jpg";
+import SubmmitButton from "../../../Components/SubmmitButton/SubmmitButton";
 
 import "./BoardCauculator.scss";
 
