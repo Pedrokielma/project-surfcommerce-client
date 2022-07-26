@@ -1,0 +1,22 @@
+.single-item{
+    width: 210px;
+    height: 410px;
+    margin: 20px;
+
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    a:hover{
+        color: #4b7772;
+    }
+    
+
+    .item-image{
+        height: 60%;
+    }
+    .item-image img{
+        height: 100%;
+        width: 100%;
+    }
+}

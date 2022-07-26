@@ -1,28 +1,21 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import axios from "axios";
 import Searchbar from "../../Components/Searchbar/Searchbar";
+import LocationsModal from "../../Components/LocationModal/LocationsModal.jsx";
+import CardItem from "../../Components/CardItem/CardItem";
+
 import "./ItemListPage.css";
-import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
-// import { ThemeContext } from '../../context/theme.context';
-
-import LocationsModal from '../../Components/LocationModal/LocationsModal.jsx'
-
-
-
 
 function ItemsListPage() {
   const [items, setItems] = useState([]);
   const [displayItems, setDisplayItems] = useState([]);
-  
+
   const storedToken = localStorage.getItem("authToken");
 
   // butons to filter location and price
-  const [isOpen, setIsOpen] = useState(false)
-  
-  
-
- 
+  const [isOpen, setIsOpen] = useState(false);
 
   const fetchItems = async () => {
     try {
@@ -65,34 +58,28 @@ function ItemsListPage() {
   };
 
   const locationFilter = (filters) => {
-    console.log(displayItems)
+    console.log(displayItems);
     console.log("epa", filters);
     // setDisplayItems(locatedItems);
   };
 
-
   const handleFormSubmit = (loc) => {
-
-   
     let submitFilteredItems = items.filter((item) =>
-    loc.includes(item.location)
-  );
+      loc.includes(item.location)
+    );
 
-  
-
-    setIsOpen(false)
+    setIsOpen(false);
     setDisplayItems(submitFilteredItems);
 
     console.log(loc);
-    console.log(displayItems)
+    console.log(displayItems);
     console.log(isOpen);
-
   };
 
   return (
     <div className="items-page-main">
       <div className="items-serchbar">
-      <Searchbar  search={searchFilter} />
+        <Searchbar search={searchFilter} />
       </div>
       <div className="nav-filter">
         <nav className="nav-filter-one">
@@ -113,26 +100,27 @@ function ItemsListPage() {
         </nav>
         <nav className="nav-filter-two">
           <ul>
-         
-        <button onClick={() => setIsOpen(true)}><span>Location</span> <MdOutlineKeyboardArrowDown className="nav-filter-icons"/> </button> 
+            <button onClick={() => setIsOpen(true)}>
+              <span>Location</span>{" "}
+              <MdOutlineKeyboardArrowDown className="nav-filter-icons" />{" "}
+            </button>
 
-        <LocationsModal 
-        filters={filters => locationFilter(filters)} 
-        open={isOpen} 
-        onClick={() => setIsOpen(false)} 
-        submit={location => handleFormSubmit(location)}
-        
-        />
-   
-          
-         {/* <button ><span>Location</span> <MdOutlineKeyboardArrowDown className="nav-filter-icons"/> </button> */}
-         {/* <LocationsModal /> */}
-         
-  
-         
-        
+            <LocationsModal
+              filters={(filters) => locationFilter(filters)}
+              open={isOpen}
+              onClick={() => setIsOpen(false)}
+              submit={(location) => handleFormSubmit(location)}
+            />
 
-          <li><button><span>Prices</span> <MdOutlineKeyboardArrowDown className="nav-filter-icons"/></button>  </li>
+            {/* <button ><span>Location</span> <MdOutlineKeyboardArrowDown className="nav-filter-icons"/> </button> */}
+            {/* <LocationsModal /> */}
+
+            <li>
+              <button>
+                <span>Prices</span>{" "}
+                <MdOutlineKeyboardArrowDown className="nav-filter-icons" />
+              </button>{" "}
+            </li>
           </ul>
         </nav>
       </div>
@@ -141,7 +129,25 @@ function ItemsListPage() {
         {/* <AddForm refreshItems={fetchItems} /> */}
         {displayItems.map((item) => {
           return (
-            <div className="single-item">
+            <CardItem
+              image={item.image}
+              category={item.category}
+              id={item._id}
+              title={item.title}
+              price={item.price}
+              favoriteItem={favoriteItem}
+            />
+          );
+        })}
+      </section>
+    </div>
+  );
+}
+
+export default ItemsListPage;
+
+{
+  /* <div className="single-item">
             
               <div className="item-image" >
               <img alt="" src={`${item.image}`}/>
@@ -160,15 +166,5 @@ function ItemsListPage() {
                   Add to favorite
                 </button>
               </div>
-          
-          );
-        })}
-
-       
-      </section>
-    </div>
-  );
+           */
 }
-
-export default ItemsListPage;
-
