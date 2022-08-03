@@ -1,15 +1,25 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import "./CardItem.scss";
-import AiFillHeart from "react-icons/ai";
-import AiOutlineHeart from "react-icons/ai";
+import {AiFillHeart} from "react-icons/ai";
+import {AiOutlineHeart} from "react-icons/ai";
 
 function CardItem(props) {
-  const [favorite, setFavorite] = useState();
+  const [favorite, setFavorite] = useState(true);
+
+
+
   return (
     <div className="single-item">
       <div className="item-image">
         <img alt="" src={`${props.image}`} />
+        <div>
+        <AiFillHeart className='heart-icon'/>
+        </div>
+        
+        {/* {
+          favorite ? <AiFillHeart className='heart-icon'/> : <AiOutlineHeart className='heart-icon'/>
+        } */}
       </div>
       <div className="item-info">
         <p className="item-category">{props.category}</p>

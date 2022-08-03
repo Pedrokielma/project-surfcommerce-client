@@ -14,9 +14,19 @@
 
     .item-image{
         height: 60%;
-    }
-    .item-image img{
+        .heart-icon{
+            position: relative;
+            bottom: 50px;
+            z-index: 10;
+            height: 60%;
+            
+        }
+          img{
         height: 100%;
         width: 100%;
+
     }
+    }
+  
+
 }

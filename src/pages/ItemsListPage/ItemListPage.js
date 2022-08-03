@@ -11,11 +11,26 @@ import "./ItemListPage.css";
 function ItemsListPage() {
   const [items, setItems] = useState([]);
   const [displayItems, setDisplayItems] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
   const storedToken = localStorage.getItem("authToken");
 
   // butons to filter location and price
   const [isOpen, setIsOpen] = useState(false);
+
+  const favoriteItemsList = async () => {
+    try {
+      let response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/myadds`,
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      );
+      setFavorites(response.data.favitems);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const fetchItems = async () => {
     try {
@@ -34,7 +49,10 @@ function ItemsListPage() {
 
   useEffect(() => {
     fetchItems();
+    favoriteItemsList()
   }, []);
+
+  console.log('favorites', favorites);
 
   const favoriteItem = (itemId) => {
     axios

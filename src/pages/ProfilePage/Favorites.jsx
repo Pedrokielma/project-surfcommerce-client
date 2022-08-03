@@ -25,6 +25,16 @@ function Favorites() {
       fetchItems();
     }, []);
 
+    const deleteItem = (itemId) => {
+      
+      axios
+        .delete(
+          `${process.env.REACT_APP_API_URL}/api/favorite/${itemId}`
+        )
+        .then(() => console.log(itemId))
+        .catch((err) => console.log(err));
+    };
+
 
   return (
     <div className='items-page-main'>
@@ -48,7 +58,7 @@ function Favorites() {
 			<h2>{item.title}</h2>
       <h6>{item.category}</h6>
 			
-      <Link className="btn"  to={`/items/edit/${item._id}`}>Delete </Link>
+      <p className="btn" onClick={() => deleteItem(item._id)}  >Delete </p>
 		</div>
 	</div>
 </div>
