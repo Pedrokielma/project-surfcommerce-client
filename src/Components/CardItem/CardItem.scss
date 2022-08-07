@@ -14,18 +14,19 @@
 
     .item-image{
         height: 60%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
         .heart-icon{
             position: relative;
-            bottom: 50px;
-            z-index: 10;
-            height: 60%;
-            
+            color: red;
+           font-size: 25px; 
+           left: 85px;
+           top: 5px;
+           cursor: pointer;
         }
-          img{
-        height: 100%;
-        width: 100%;
 
-    }
+    
     }
   
 

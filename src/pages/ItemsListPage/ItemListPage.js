@@ -12,6 +12,8 @@ function ItemsListPage() {
   const [items, setItems] = useState([]);
   const [displayItems, setDisplayItems] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  const [reload, setReload] = useState(false);
+
 
   const storedToken = localStorage.getItem("authToken");
 
@@ -47,25 +49,31 @@ function ItemsListPage() {
     }
   };
 
-  useEffect(() => {
-    fetchItems();
-    favoriteItemsList()
-  }, []);
-
-  console.log('favorites', favorites);
-
-  const favoriteItem = (itemId) => {
+  const addFavorite = (itemId) => {
     axios
       .put(
         `${process.env.REACT_APP_API_URL}/api/favorite/${itemId}`,
         {},
         {
           headers: { Authorization: `Bearer ${storedToken}` },
-        }
+        },
+        reload ? setReload(false) : setReload(true)
       )
       .then(() => console.log(itemId))
       .catch((err) => console.log(err));
   };
+
+  
+
+  useEffect(() => {
+    fetchItems();
+    favoriteItemsList()
+    console.log('epa', reload)
+  }, [reload]);
+
+  console.log('favorites', favorites);
+
+ 
 
   const searchFilter = (searchQuery) => {
     let filteredItems = items.filter((item) =>
@@ -153,7 +161,10 @@ function ItemsListPage() {
               id={item._id}
               title={item.title}
               price={item.price}
-              favoriteItem={favoriteItem}
+              addFavorite={addFavorite}
+              favorites={favorites}
+              storedToken={storedToken}
+              reload={reload}
             />
           );
         })}

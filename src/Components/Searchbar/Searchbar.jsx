@@ -13,7 +13,6 @@ function Searchbar(props) {
 
   return (
     <div className='searchbar-div'>
-    
       <input type="text" placeholder='Search' value={search} onChange={handleChange} /> <FiSearch className='serch-icon' />
     </div>
   );
