@@ -1,0 +1,100 @@
+
+.items-page-main{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 40px;
+    position: relative;
+    margin: 0px auto;
+         max-width: 1220px;
+
+    .items-serchbar{
+        height: 100px;
+        
+     }
+     .nav-filter{
+         
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         width: 100%;
+         height: 10rem; 
+
+         .nav-filter-one{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+   
+            ul{
+               display: flex;
+               justify-content: space-around;
+               flex-direction: row;
+               padding: 0;
+               margin-bottom: 0;
+               margin-top: 16px;
+              
+               align-items: center;
+               background-color: white;
+               align-items: center;
+              
+               width: 400px;
+      
+               a{
+                  text-decoration: none;
+                  color: black;
+                  margin: 10px;
+              }
+           }
+        }
+        
+        
+        .nav-filter-two{
+            display: flex;
+            height: 32px;
+            width: 100%;  
+            padding-left: 30px;
+   
+             ul{
+               display: flex;
+               justify-content: space-between;
+               height: 100%;
+               width: 300px;
+               margin: 0;
+               padding: 0;
+           }
+            button{
+               display: flex;
+               justify-content: space-between;
+               color: white;
+               text-decoration: none;
+               font-size: 16px;
+               
+               align-items: center;
+               padding-left: 5px;
+               
+               border-style: none;
+               Width: 120px;
+               Height: 30px;
+               border-radius: 6px;
+               background-color: #4b7772;
+           } 
+           .nav-filter-icons{
+            font-size: 20px;
+        }
+        }
+         
+     }
+     
+     .item-list{
+         width: 100vw;
+         display: flex;
+         flex-wrap: wrap;
+         width: 100%;
+         padding: 70px 30px 30px 30px;
+         gap: 25px;
+     
+     }
+    
+}
+

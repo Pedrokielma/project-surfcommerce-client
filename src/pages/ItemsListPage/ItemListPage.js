@@ -6,13 +6,14 @@ import Searchbar from "../../Components/Searchbar/Searchbar";
 import LocationsModal from "../../Components/LocationModal/LocationsModal.jsx";
 import CardItem from "../../Components/CardItem/CardItem";
 
-import "./ItemListPage.css";
+import "./ItemListPage.scss";
 
 function ItemsListPage() {
   const [items, setItems] = useState([]);
   const [displayItems, setDisplayItems] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(null);
   const [reload, setReload] = useState(false);
+
 
 
   const storedToken = localStorage.getItem("authToken");
@@ -28,6 +29,7 @@ function ItemsListPage() {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
       );
+      
       setFavorites(response.data.favitems);
     } catch (error) {
       console.log(error);
@@ -49,31 +51,29 @@ function ItemsListPage() {
     }
   };
 
-  const addFavorite = (itemId) => {
-    axios
-      .put(
+  const addFavorite = (itemId, favorite) => {
+    try {
+       axios.put(
         `${process.env.REACT_APP_API_URL}/api/favorite/${itemId}`,
         {},
         {
           headers: { Authorization: `Bearer ${storedToken}` },
         },
-        reload ? setReload(false) : setReload(true)
-      )
-      .then(() => console.log(itemId))
-      .catch((err) => console.log(err));
+      ).then(() => favoriteItemsList())
+      .then(()=> reload ? setReload(false) : setReload(true))
+    } catch (error) {
+      console.log(error);
+    }
   };
-
-  
 
   useEffect(() => {
     fetchItems();
-    favoriteItemsList()
-    console.log('epa', reload)
+    favoriteItemsList();
+    console.log('reload', reload)
+    
   }, [reload]);
 
-  console.log('favorites', favorites);
-
- 
+  
 
   const searchFilter = (searchQuery) => {
     let filteredItems = items.filter((item) =>
@@ -84,8 +84,7 @@ function ItemsListPage() {
   };
 
   const locationFilter = (filters) => {
-    console.log(displayItems);
-    console.log("epa", filters);
+    
     // setDisplayItems(locatedItems);
   };
 
@@ -96,104 +95,82 @@ function ItemsListPage() {
 
     setIsOpen(false);
     setDisplayItems(submitFilteredItems);
-
-    console.log(loc);
-    console.log(displayItems);
-    console.log(isOpen);
   };
 
   return (
-    <div className="items-page-main">
-      <div className="items-serchbar">
-        <Searchbar search={searchFilter} />
+    favorites && (
+      <div className="items-page-main">
+        <div className="items-serchbar">
+          <Searchbar search={searchFilter} />
+        </div>
+        <div className="nav-filter">
+          <nav className="nav-filter-one">
+            <ul>
+              <li>
+                <Link to="/profile"> All</Link>
+              </li>
+              <li>
+                <Link to="/profile"> Wet Suit</Link>
+              </li>
+              <li>
+                <Link to="/profile"> Boards</Link>
+              </li>
+              <li>
+                <Link to="/profile"> Assesories</Link>
+              </li>
+            </ul>
+          </nav>
+          <nav className="nav-filter-two">
+            <ul>
+              <button onClick={() => setIsOpen(true)}>
+                <span>Location</span>{" "}
+                <MdOutlineKeyboardArrowDown className="nav-filter-icons" />{" "}
+              </button>
+
+              <LocationsModal
+                filters={(filters) => locationFilter(filters)}
+                open={isOpen}
+                onClick={() => setIsOpen(false)}
+                submit={(location) => handleFormSubmit(location)}
+              />
+
+              {/* <button ><span>Location</span> <MdOutlineKeyboardArrowDown className="nav-filter-icons"/> </button> */}
+              {/* <LocationsModal /> */}
+
+              <li>
+                <button>
+                  <span>Prices</span>{" "}
+                  <MdOutlineKeyboardArrowDown className="nav-filter-icons" />
+                </button>{" "}
+              </li>
+            </ul>
+          </nav>
+          
+        </div>
+
+        <section className="item-list">
+          {/* <AddForm refreshItems={fetchItems} /> */}
+          {displayItems.map((item) => {
+            return (
+              <CardItem
+                image={item.image}
+                category={item.category}
+                id={item._id}
+                title={item.title}
+                price={item.price}
+                addFavorite={addFavorite}
+                favoriteItemsList={favoriteItemsList}
+                favorites={favorites}
+                storedToken={storedToken}
+                reload={reload}
+                setReload={setReload}
+              />
+            );
+          })}
+        </section>
       </div>
-      <div className="nav-filter">
-        <nav className="nav-filter-one">
-          <ul>
-            <li>
-              <Link to="/profile"> All</Link>
-            </li>
-            <li>
-              <Link to="/profile"> Wet Suit</Link>
-            </li>
-            <li>
-              <Link to="/profile"> Boards</Link>
-            </li>
-            <li>
-              <Link to="/profile"> Assesories</Link>
-            </li>
-          </ul>
-        </nav>
-        <nav className="nav-filter-two">
-          <ul>
-            <button onClick={() => setIsOpen(true)}>
-              <span>Location</span>{" "}
-              <MdOutlineKeyboardArrowDown className="nav-filter-icons" />{" "}
-            </button>
-
-            <LocationsModal
-              filters={(filters) => locationFilter(filters)}
-              open={isOpen}
-              onClick={() => setIsOpen(false)}
-              submit={(location) => handleFormSubmit(location)}
-            />
-
-            {/* <button ><span>Location</span> <MdOutlineKeyboardArrowDown className="nav-filter-icons"/> </button> */}
-            {/* <LocationsModal /> */}
-
-            <li>
-              <button>
-                <span>Prices</span>{" "}
-                <MdOutlineKeyboardArrowDown className="nav-filter-icons" />
-              </button>{" "}
-            </li>
-          </ul>
-        </nav>
-      </div>
-
-      <section className="item-list">
-        {/* <AddForm refreshItems={fetchItems} /> */}
-        {displayItems.map((item) => {
-          return (
-            <CardItem
-              image={item.image}
-              category={item.category}
-              id={item._id}
-              title={item.title}
-              price={item.price}
-              addFavorite={addFavorite}
-              favorites={favorites}
-              storedToken={storedToken}
-              reload={reload}
-            />
-          );
-        })}
-      </section>
-    </div>
+    )
   );
 }
 
 export default ItemsListPage;
-
-{
-  /* <div className="single-item">
-            
-              <div className="item-image" >
-              <img alt="" src={`${item.image}`}/>
-              </div>
-              <div className="item-info">
-              <h6 className="item-category"> <h6>{item.category}</h6></h6>
-              <h4 className="item-name">
-                  <Link to={`/items/${item._id}`}>{item.title} </Link>{" "}
-                </h4>
-              <h6 className="item-price">
-                <b>{item.price}$</b>
-              </h6> 
-              </div>            
-
-                <button className="btn" onClick={() => favoriteItem(item._id)}>
-                  Add to favorite
-                </button>
-              </div>
-           */
-}
