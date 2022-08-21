@@ -5,9 +5,9 @@ import image from "../../images/backgroundImage.jpg";
 import image2 from "../../images/image 26.jpg";
 import Navbar from "../../Components/Navbar/Navbar";
 import BoardCauculator from './Components/BoardCauculator.jsx'
-import SubmmitButton from "../../Components/SubmmitButton/SubmmitButton";
+import GreenButton from "../../Components/GreenButton/GreenButton";
 
-import "./HomePage.css";
+import "./HomePage.scss";
 
 function HomePage() {
   const { loggedIn, isLoading } = useContext(AuthContext);

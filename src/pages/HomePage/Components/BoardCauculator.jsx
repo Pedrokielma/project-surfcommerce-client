@@ -1,12 +1,13 @@
 import React from "react";
 import image2 from "../../../images/image 26.jpg";
-import SubmmitButton from "../../../Components/SubmmitButton/SubmmitButton";
+import GreenButton from "../../../Components/GreenButton/GreenButton";
+import InputForm from "../../../Components/InputForm/InputForm";
 
 import "./BoardCauculator.scss";
 
 function BoardCauculator() {
   return (
-    <div className="calculate-board-div">
+<div className="calculate-board-div">
       <img src={image2} alt="surfers" />
       <form className="calculate-board-form" action="">
         <div>
@@ -16,40 +17,33 @@ function BoardCauculator() {
           </p>
         </div>
         <div className="div-inputs">
-          <label htmlFor="level" id="level" placeholder="Begginer">
-            Surf level
-          </label>
-          <input
-            type="select"
-            name="username"
-            className="input-board-ccalculate"
-            value="#"
-            onChange="#"
-          />
+
+        <InputForm 
+          name="username"
+          title='Surf level'
+          type='select'
+          placeholder='placeholder'
+          handleSubmit='#'
+        />
+         <InputForm 
+          name="text"
+          title='Weigth'
+          type='number'
+          placeholder='placeholder'
+          handleSubmit='#'
+        />
+         <InputForm 
+          name="text"
+          title='Style'
+          type='select'
+          placeholder='placeholder'
+          handleSubmit='#'
+        />
+         
         </div>
-        <div className="div-inputs">
-          <label htmlFor="weigth">Weigth</label>
-          <input
-            type="password"
-            name="password"
-            className="input-board-ccalculate"
-            value="#"
-            onChange="#"
-          />
-        </div>
-        <div className="div-inputs">
-          <label htmlFor="style">Style</label>
-          <input
-            type="password"
-            name="password"
-            className="input-board-ccalculate"
-            value="#"
-            onChange="#"
-          />
-        </div>
-        <SubmmitButton content="Calculate" />
+        <GreenButton content="Calculate" />
       </form>
-    </div>
+    </div>    
   );
 }
 

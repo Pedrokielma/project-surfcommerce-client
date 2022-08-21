@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/auth.context";
 import image from "../../images/logoduckdive.png";
 import Navlink from "../Navlink/Navlink.jsx";
 
-import style from  "./Navbar.scss";
+import  "./Navbar.scss";
 
 function Navbar() {
 

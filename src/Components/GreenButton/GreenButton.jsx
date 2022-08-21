@@ -1,10 +1,10 @@
 import React from 'react'
-import './SubmmitButton.scss'
+import './GreenButton.scss'
 
-function SubmmitButton(props) {
+function GreenButton(props) {
   return (
     <button className='submmit-button' type="submit">{props.content}</button>
   )
 }
 
-export default SubmmitButton
+export default GreenButton

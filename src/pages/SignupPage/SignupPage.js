@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FcGoogle } from "react-icons/fc";
-import SubmmitButton from "../../Components/SubmmitButton/SubmmitButton";
+import GreenButton from "../../Components/GreenButton/GreenButton";
 
 import "./SignupPage.css";
 
@@ -80,7 +80,7 @@ function SignupPage() {
                 onChange={handlePassword}
               />
             </div>
-            <SubmmitButton content="Sign up" />
+            <GreenButton content="Sign up" />
           </form>
 
           <hr className="or-div" />

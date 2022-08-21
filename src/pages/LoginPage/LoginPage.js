@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
 import axios from 'axios';
 import { FcGoogle } from 'react-icons/fc'
-import SubmmitButton from '../../Components/SubmmitButton/SubmmitButton';
+import GreenButton from '../../Components/GreenButton/GreenButton';
 
 import './LoginPage.css';
 
@@ -53,7 +53,7 @@ function LoginPage() {
         <label htmlFor="password">Password</label>
         <input type="password" name="password" placeholder="8-10 character password" id="password" value={password} onChange={handlePassword} />
         </div>
-        <SubmmitButton  content='Login' />
+        <GreenButton  content='Login' />
       </form>
 
       

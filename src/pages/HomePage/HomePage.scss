@@ -1,0 +1,85 @@
+.main{
+  .first-section {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../../images/backgroundImage.jpg);
+    background-repeat: no-repeat;
+  
+    .home-container {
+      /* position: absolute; */
+    
+      left: 846px;
+      top: 382px;
+      color: white;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 30px;
+  
+      .title {
+        line-height: 120px;
+        font-family: "Chivo", sans-serif;
+        font-weight: 900;
+        font-size: 159px;
+  
+        span {
+          display: inline-block;
+          overflow: hidden;
+          margin-left: 60px;
+        
+          text-align: right;
+        }
+      }
+  
+  
+      .link-seeItems {
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        width: 261px;
+        height: 67.35px;
+        background-color: #4b7772;
+        border-radius: 6px;
+        border-style: none;
+  
+        a {
+          color: white;
+          text-decoration: none;
+          font-size: 20px;
+        }
+        a:hover {
+          color: black;
+        }
+      }
+    }
+  }
+
+  .second-section {
+    padding-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #4b7772;
+  }
+}
+
+
+
+
+
+@media (max-width: 700px) {
+  .title {
+    font-size: 110px;
+    line-height: 90px;
+  }
+  .title p {
+    font-size: 24px;
+  }
+  .title button {
+    font-size: 18px;
+  }
+}
