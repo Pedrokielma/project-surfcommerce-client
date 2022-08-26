@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Navbar from "./Components/Navbar/Navbar";
 import HomePage from "./pages/HomePage/HomePage";
 import ItemListPage from "./pages/ItemsListPage/ItemListPage";
-import LoginPage from "./pages/LoginPage/LoginPage";
+import LoginPage from "./pages/LoginPage/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import AddItem from "./pages/ProfilePage/AddItem";
 import MyAdds from "./pages/ProfilePage/MyAdds";

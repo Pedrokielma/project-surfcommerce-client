@@ -4,8 +4,9 @@ import { AuthContext } from '../../context/auth.context';
 import axios from 'axios';
 import { FcGoogle } from 'react-icons/fc'
 import GreenButton from '../../Components/GreenButton/GreenButton';
+import InputForm from '../../Components/InputForm/InputForm';
 
-import './LoginPage.css';
+import './LoginPage.scss';
 
 
 function LoginPage() {
@@ -46,14 +47,30 @@ function LoginPage() {
       <h1 className="title-sign"> <b>Login</b></h1>
       <form  className="sign-form" onSubmit={handleSubmit}>
       <div className='login-form-div'>
-        <label htmlFor="email" id="email"  >Email</label>
-        <input type="text" name="email" placeholder="Write your Email" value={email} onChange={handleEmail} />
+      <InputForm 
+          name="email"
+          title='Email'
+          type='email'
+          placeholder='Write your Email'
+          handleSubmit={handleEmail}
+        />
+        {/* <label htmlFor="email" id="email"  >Email</label>
+        <input type="text" name="email" placeholder="Write your Email" value={email} onChange={handleEmail} /> */}
         </div>
         <div className='login-form-div'>
-        <label htmlFor="password">Password</label>
-        <input type="password" name="password" placeholder="8-10 character password" id="password" value={password} onChange={handlePassword} />
+        <InputForm 
+          name="password"
+          title='Password'
+          type='password'
+          placeholder='8-10 character password'
+          handleSubmit={handlePassword}
+        />
+        {/* <label htmlFor="password">Password</label>
+        <input type="password" name="password" placeholder="8-10 character password" id="password" value={password} onChange={handlePassword} /> */}
         </div>
+        <div className='button-div'>
         <GreenButton  content='Login' />
+        </div>
       </form>
 
       

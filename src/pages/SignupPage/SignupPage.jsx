@@ -3,8 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FcGoogle } from "react-icons/fc";
 import GreenButton from "../../Components/GreenButton/GreenButton";
+import InputForm from "../../Components/InputForm/InputForm";
 
-import "./SignupPage.css";
+import "./SignupPage.scss";
 
 function SignupPage() {
   const [email, setEmail] = useState("");
@@ -44,43 +45,31 @@ function SignupPage() {
             <b>Signup</b>
           </h1>
           <form className="sign-in-form" onSubmit={handleSubmit}>
-            <div className="login-form-div">
-            
+            <InputForm
+              name="name"
+              title="Name"
+              type="text"
+              placeholder="Write your Name"
+              handleSubmit={handleName}
+            />
 
-              <label htmlFor="name" id="name">
-                Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Write your Name"
-                value={name}
-                onChange={handleName}
-              />
+            <InputForm
+              name="email"
+              title="Email"
+              type="email"
+              placeholder="Write your Email"
+              handleSubmit={handleEmail}
+            />
 
-              <label htmlFor="email" id="email">
-                Email
-              </label>
-              <input
-                type="text"
-                name="email"
-                placeholder="Write your Email"
-                value={email}
-                onChange={handleEmail}
-              />
-            </div>
-            <div className="login-form-div">
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                name="password"
-                placeholder="8-10 character password"
-                id="password"
-                value={password}
-                onChange={handlePassword}
-              />
-            </div>
-            <GreenButton content="Sign up" />
+            <InputForm
+              name="password"
+              title="Password"
+              type="password"
+              placeholder="8-10 character password"
+              handleSubmit={handlePassword}
+            />
+
+            <GreenButton className='submit-button' content="Sign up" />
           </form>
 
           <hr className="or-div" />
